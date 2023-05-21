@@ -62,6 +62,15 @@ libraryDependencies ++= Seq(
 )
 ```
 
+```scala
+object Main {
+  def run(): Unit = {
+    val ages = Seq(42, 75, 29, 64)
+    println(s"The oldest person is ${ages.max}")
+  }
+}
+```
+
 - To check your setup, hit the little green hammer in the top-right to build your project. Once
 it has built, you should see a little green tick in the "Build" window at the bottom of the IDE.
 If your build fails please check you have followed each of these steps correctly.
@@ -159,6 +168,12 @@ java -version
 
 ```bash
 sudo nano /etc/environment
+```
+
+export path ubuntu
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0
 ```
 
 ```bash

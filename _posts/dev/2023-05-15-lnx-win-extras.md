@@ -6,6 +6,34 @@ tags: [Ansible,extra,win,setup]     # TAG names should always be lowercase
 pin: true
 ---
 
+Install SPICE in VM Linux
+
+```bash
+sudo dnf install -y virt-viewer -y
+```
+
+Clear file content
+
+```bash
+sudo sed -i '1,$d' FILE_PATH
+```
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa paul@192.168.1.209
+```
+
+```bash
+echo 'paul ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
+```
+
+```bash
+sudo cp /tmp/sudoers /etc/sudoers.d/paul
+```
+
+```bash
+sudo ls -la /root
+```
+
 ### vscode server
 
 #### On Rocky
@@ -18,11 +46,25 @@ curl -fsSL https://code-server.dev/install.sh | sh
 sudo systemctl start code-server@$USER
 sudo systemctl enable code-server@$USER
 sudo systemctl status code-server@$USER
+```
+
+```bash
+nano ~/.config/code-server/config.yaml
+```
+
+```text
+bind-addr: 0.0.0.0:8080
+auth: password
+password: secret_pass
+cert: false
+```
+
+```bash
 sudo systemctl restart code-server@$USER
 ```
 
 ```bash
-sudo dnf install firewalld
+sudo dnf install -y epel-release && sudo dnf install -y firewalld && sudo dnf install -y ansible
 ```
 
 ```bash
@@ -34,6 +76,44 @@ sudo systemctl enable firewalld
 sudo firewall-cmd --add-port={8080,80,443}/tcp --permanent
 sudo firewall-cmd --reload
 ```
+
+to remove
+
+```bash
+sudo dnf remove code-server
+
+rm -rf ~/.local/share/code-server ~/.config/code-server
+
+rm -rf ~/.local/lib/code-server-*
+```
+
+Install nginx on Rocky
+
+```bash
+sudo dnf install -y nginx certbot python3-certbot-nginx
+```
+
+```bash
+sudo systemctl enable nginx
+sudo systemctl start nginx
+```
+
+```bash
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --list-all
+```
+
+```bash
+sudo firewall-cmd --reload
+```
+
+```bash
+systemctl status nginx
+```
+
+
+
+
 
 #### On Ubuntu
 
@@ -53,17 +133,11 @@ sudo systemctl restart code-server@$USER
 ```
 
 ```bash
-sudo apt install nginx -y
+sudo apt install nano nginx -y
 ```
 
 ```bash
-sudo systemctl start nginx
-sudo systemctl enable nginx
-sudo systemctl status nginx
-```
-
-```bash
-sudo apt install nano -y
+sudo systemctl start nginx && sudo systemctl enable nginx && sudo systemctl status nginx
 ```
 
 ```bash
