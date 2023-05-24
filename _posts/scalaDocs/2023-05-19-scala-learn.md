@@ -3,7 +3,7 @@ title: Scala Learn
 date: 2023-05-19 10:56:00 +0100
 categories: [software,learn,scala]
 tags: [software,docs,scala,learn]     # TAG names should always be lowercase
-pin: true
+pin: false
 ---
 
 👩‍💻

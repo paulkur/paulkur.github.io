@@ -1,8 +1,8 @@
 ---
 title: Scala Setup
-date: 2023-05-18 10:56:00 +0100
-categories: [software,setup,github]
-tags: [software,docs,setup]     # TAG names should always be lowercase
+date: 2023-05-24 10:14:00 +0100
+categories: [software,docs,scala,setup]
+tags: [software,docs,scala,spark,setup]     # TAG names should always be lowercase
 pin: true
 ---
 
