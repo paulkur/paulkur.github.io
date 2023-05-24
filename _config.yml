@@ -37,8 +37,8 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Paul
-  email: example@domain.com # change to your email address
+  name: Paul Kurpis
+  email: paulkurpis@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/paulk3134 # change to your twitter homepage
@@ -80,7 +80,10 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://pbs.twimg.com/profile_images/1559893635193249792/Wr9OOZuj_400x400.png
+# profile image 
+avatar: /assets/img/Profile.jpg
+# twitter
+# avatar: https://pbs.twimg.com/profile_images/1559893635193249792/Wr9OOZuj_400x400.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
