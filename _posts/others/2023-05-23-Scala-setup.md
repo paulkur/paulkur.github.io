@@ -8,7 +8,7 @@ pin: true
 
 👩‍💻
 
-## Menu
+## Menu 
 
 - [Menu](#menu)
   - [To set up an IntelliJ project properly using Scala, Spark and sbt](#to-set-up-an-intellij-project-properly-using-scala-spark-and-sbt)
