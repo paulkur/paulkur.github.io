@@ -6,9 +6,20 @@ tags: [software,docs,scala,spark,setup]     # TAG names should always be lowerca
 pin: true
 ---
 
-## Hi ! 👋 and Welcome to
+Hi ! 👋 and Welcome
 
-### How to setup Scala-Spark  local environment
+## Menu
+
+- [Menu](#menu)
+- [How to setup Scala-Spark local environment](#how-to-setup-scala-spark-local-environment)
+  - [Windows users 👩‍💻](#windows-users-)
+  - [MacOS \& Linux users](#macos--linux-users)
+  - [Possible issues and fixes](#possible-issues-and-fixes)
+- [Set up Scala for functional programming](#set-up-scala-for-functional-programming)
+  - [On Windows](#on-windows)
+  - [On Linux](#on-linux)
+
+## How to setup Scala-Spark local environment
 
 ### Windows users 👩‍💻
 
@@ -57,27 +68,37 @@ System.setProperty("hadoop.home.dir","C:\\hadoop") // replace C:\\hadoop with yo
 
 Folder 📂 structure is as follows:
 
-src
- | main
-  | scala
-    | prod
-      |  q1.scala
-      |  q2.scala
-      |  q3.scala
-      |  q4.scala
+```tree
+assignment
+  src
+   main
+     scala
+       prod
+        model.scala
+        q1.scala
+        q2.scala
+        q3.scala
+        q4.scala
+```
 
- -CSV output files can be found in:
+- CSV output files can be found in:
 
-src
- | main
-  | resources 
-    | data
-      |  exports
-        |  <names-in-projects>
-        |  <names-in-projects>
-        |  <names-in-projects>
+```tree
+assignment
+  src
+   main
+     resources
+       data
+         exports
+          names-in-projects
+          names-in-projects
+          names-in-projects
+```
 
 - To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
+
+![Start the code](/posts/20230524/start.png){: width="972" height="589" }
+_Setup for a start_
 
 - Clean/Remove the Spark-Cluster
 
@@ -123,27 +144,37 @@ docker-compose up -d --scale spark-worker=3
 
 Folder 📂 structure is as follows:
 
-src
- | main
-  | scala
-    | prod
-      |  q1.scala
-      |  q2.scala
-      |  q3.scala
-      |  q4.scala
+```tree
+assignment
+  src
+   main
+     scala
+       prod
+        model.scala
+        q1.scala
+        q2.scala
+        q3.scala
+        q4.scala
+```
 
- -CSV output files can be found in:
+- CSV output files can be found in:
 
-src
- | main
-  | resources 
-    | data
-      |  exports
-        |  <names-in-projects>
-        |  <names-in-projects>
-        |  <names-in-projects>
+```tree
+assignment
+  src
+   main
+     resources
+       data
+         exports
+          names-in-projects
+          names-in-projects
+          names-in-projects
+```
 
 - To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
+
+![Start the code](/posts/20230524/start.png){: width="972" height="589" }
+_Setup for a start_
 
 - Clean/Remove the Spark-Cluster
 
@@ -151,7 +182,9 @@ src
 cd .. && .\docker-clean.sh
 ```
 
-#### Possible issues and possible fixes
+[Back to Top](#menu)
+
+### Possible issues and fixes
 
 Make sure the ownership of `~/.docker` is correct
 
@@ -177,9 +210,9 @@ Linux
 sudo usermod -aG docker $USER
 ```
 
+[Back to Top](#menu)
 
-
-### Set up Scala for functional programming
+## Set up Scala for functional programming
 
 using: Spark 2.4.8, Scala 2.12.10 and JDK 1.8
 
@@ -227,7 +260,7 @@ scala -version
 sbt scalaVersion
 ```
 
-### Adding PATH
+- Adding PATH
 
 - for JDK [steps here](https://www.webucator.com/article/how-to-set-path-from-java_home/)
 
@@ -246,6 +279,8 @@ echo %JAVA_HOME%
 ```powershell
 java -version
 ```
+
+[Back to Top](#menu)
 
 ### On Linux
 
@@ -293,7 +328,7 @@ Installing latest version!
 ./cs setup
 ```
 
-#### Adding PATH
+- Adding PATH
 
 - for JDK [steps here](https://www.webucator.com/article/how-to-set-path-from-java_home/)
 
