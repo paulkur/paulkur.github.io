@@ -10,14 +10,14 @@ pin: true
 
 ### How to setup Scala-Spark  local environment
 
-#### Windows users 👩‍💻
+### Windows users 👩‍💻
 
 - Install Docker 🐳 for [Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 > Windows users: Docker needs Windows Hyper-V to work.
 {: .prompt-tip }
 
-- in a terminal window, navigate to the location of the `assignment.zip`
+- In a terminal window, navigate to the location of the `assignment.zip`
 
 > Replace `<USERNAME>` with your PC username
 {: .prompt-tip }
@@ -55,9 +55,29 @@ System.setProperty("hadoop.home.dir","C:\\hadoop") // replace C:\\hadoop with yo
 
 - Open with IntelliJ as an SBT project
 
-```TEXT
-**PAUL, INSERT INSTRUCTIONS FOR INSIDE OF INTELIJ**
-```
+Folder 📂 structure is as follows:
+
+src
+ | main
+  | scala
+    | prod
+      |  q1.scala
+      |  q2.scala
+      |  q3.scala
+      |  q4.scala
+
+ -CSV output files can be found in:
+
+src
+ | main
+  | resources 
+    | data
+      |  exports
+        |  <names-in-projects>
+        |  <names-in-projects>
+        |  <names-in-projects>
+
+- To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
 
 - Clean/Remove the Spark-Cluster
 
@@ -101,9 +121,29 @@ docker-compose up -d --scale spark-worker=3
 
 - Open with IntelliJ as an SBT project
 
-```TEXT
-**PAUL, INSERT INSTRUCTIONS FOR INSIDE OF INTELIJ**
-```
+Folder 📂 structure is as follows:
+
+src
+ | main
+  | scala
+    | prod
+      |  q1.scala
+      |  q2.scala
+      |  q3.scala
+      |  q4.scala
+
+ -CSV output files can be found in:
+
+src
+ | main
+  | resources 
+    | data
+      |  exports
+        |  <names-in-projects>
+        |  <names-in-projects>
+        |  <names-in-projects>
+
+- To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
 
 - Clean/Remove the Spark-Cluster
 
