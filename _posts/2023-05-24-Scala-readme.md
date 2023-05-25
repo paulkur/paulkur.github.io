@@ -97,7 +97,7 @@ assignment
 
 - To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
 
-![Start the code](/posts/20230524/start.png){: width="972" height="589" }
+![Start the code](/assets/img/start.png){: width="972" height="589" }
 _Setup for a start_
 
 - Clean/Remove the Spark-Cluster
@@ -173,7 +173,7 @@ assignment
 
 - To run them, just open up intelij, navigate to Scala main, and run🏃‍♀️
 
-![Start the code](/posts/20230524/start.png){: width="972" height="589" }
+![Start the code](/assets/img/start.png){: width="972" height="589" }
 _Setup for a start_
 
 - Clean/Remove the Spark-Cluster
