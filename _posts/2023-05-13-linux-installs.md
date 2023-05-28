@@ -1,18 +1,11 @@
 ---
-title: Linux Pack Installs
+title: Linux Installs
 date: 2023-05-13 15:59:00 +0100
 categories: [Linux,docker,setup]
 tags: [linux,servers,docs,setup]     # TAG names should always be lowercase
 ---
 
 - Linux installs
-
-compress folder in ubuntu
-
-```bash
-tar -czvf archive.tar.gz /path/to/folder
-zip -r archive.zip /path/to/folder
-```
 
 ```bash
 sudo apt-get update && sudo apt-get upgrade
@@ -171,7 +164,7 @@ sudo systemctl status docker
 
 ```bash
 mkdir -p ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+curl -SL https://github.com/docker/compose/releases/download/v2.14.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
 docker compose version
 ```

@@ -18,9 +18,9 @@ timezone: Europe/London
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Paul Kurpis # the main title
+title: Paul's # the main title
 
-tagline: Docs Cheatsheets # it will display as the sub-title
+tagline: Docs-Cheatsheets # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   This is my HomeLab Docs
@@ -80,10 +80,10 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-# profile image 
-avatar: /assets/img/Profile.jpg
 # twitter
-# avatar: https://pbs.twimg.com/profile_images/1559893635193249792/Wr9OOZuj_400x400.png
+avatar: https://pbs.twimg.com/profile_images/1559893635193249792/Wr9OOZuj_400x400.png
+# profile image 
+# avatar: /assets/img/Profile.jpg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
