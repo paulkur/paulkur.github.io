@@ -6,8 +6,11 @@ tags: [terraform,code,docs,zorro,setup]     # TAG names should always be lowerca
 pin: true
 ---
 
-- [Terraform Init](#terraform-init)
-- [Different ways using `vars`](#different-ways-using-vars)
+## Links
+
+- [Links](#links)
+  - [Terraform Init](#terraform-init)
+  - [Different ways using `vars`](#different-ways-using-vars)
 
 Useful links👇
 
