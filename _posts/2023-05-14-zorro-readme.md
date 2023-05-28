@@ -1,5 +1,5 @@
 ---
-title: Zorro Project
+title: Zorro Readme
 date: 2023-05-14 11:59:00 +0100
 categories: [servers,Zorro,setup,Windows]
 tags: [docs,zorro,setup,windows]     # TAG names should always be lowercase

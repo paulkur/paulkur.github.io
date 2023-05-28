@@ -17,8 +17,6 @@ Useful links👇
 - [Terraform Providers](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - [GitLab project](https://gitlab.com/paulkurpis/terraform-learn/-/tree/main)
 
-When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
-
 ### Terraform Init
 
 set terminal where is your project: `cd terraform/main.tf`
@@ -35,15 +33,29 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-- Other useful commands
+Other commands
 
 ```bash
 terraform destroy
-terraform apply -var-file
+```
+
+```bash
 terraform destroy -target <target_name>
+```
+
+```bash
+terraform apply -var-file
+```
+
+```bash
 terraform state list
+```
+
+```bash
 terraform state show
 ```
+
+[Back to Top](#links)
 
 ### Different ways using `vars`
 
