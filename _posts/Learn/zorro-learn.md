@@ -1,8 +1,8 @@
 ---
-title: Zorro Dev
-date: 2023-05-14 09:59:00 +0100
-categories: [servers,Zorro,setup]
-tags: [code,docs,zorro,setup]     # TAG names should always be lowercase
+title: Zorro Dev and learn
+date: 2023-05-28 09:59:00 +0100
+categories: [servers,Zorro,learn]
+tags: [code,docs,zorro,learn]     # TAG names should always be lowercase
 pin: true
 ---
 👇

@@ -2,7 +2,7 @@
 title: Terraform setup
 date: 2023-05-14 14:59:00 +0100
 categories: [Terraform,Zorro,setup]
-tags: [code,docs,zorro,setup]     # TAG names should always be lowercase
+tags: [terraform,code,docs,zorro,setup]     # TAG names should always be lowercase
 pin: true
 ---
 
