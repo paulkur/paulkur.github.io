@@ -221,16 +221,18 @@ lsblk
 lsusb
 fdisk -l
 sudo mkfs -t ext4 /dev/sdb1
-mkdir /mnt/usb-drive
+mkdir /mnt/backups
 
 # get UUID 
 ls -l /dev/disk/by-uuid/*
 nano /etc/fstab
 ## add line
-/dev/disk/by-uuid/DISK_UUID  /mnt/m2drive  exfat    defaults    0
+/dev/disk/by-uuid/DISK_UUID  /mnt/backups  exfat    defaults    0
 df -h
 mount -a
 ```
+/dev/disk/by-uuid/550940b4-9e24-48af-bb92-86b9567f0029  /mnt/backups  exfat    defaults    0
+
 
 Linux-Client
 
