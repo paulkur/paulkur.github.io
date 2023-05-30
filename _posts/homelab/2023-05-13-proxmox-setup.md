@@ -23,6 +23,12 @@ Useful links:
 
 ### Proxmox Setup
 
+- copyssh key
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa root@192.168.1.142
+```
+
 - non production updates
 
 ```bash
@@ -81,14 +87,19 @@ PasswordAuthentication yes
 - Create VM template
 
 ```bash
-qm create 8000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
-qm importdisk 8000 jammy-server-cloudimg-amd64.img local-lvm
-qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
-qm set 8000 --ide2 local-lvm:cloudinit
-qm set 8000 --boot c --bootdisk scsi0
-qm set 8000 --serial0 socket --vga serial0
-qm template 8000
-qm clone 8000 131 --name yoshi --full
+qm create 9000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
+qm importdisk 9000 jammy-server-cloudimg-amd64.img local-lvm
+qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
+qm set 9000 --ide2 local-lvm:cloudinit
+qm set 9000 --boot c --bootdisk scsi0
+qm set 9000 --serial0 socket --vga serial0
+qm template 9000
+qm clone 9000 131 --name yoshi --full
+```
+
+```bash
+qm create 9000 --memory 2048 --net0 virtio,bridge=vmbr0 --scsihw virtio-scsi-pci
+qm set 9000 --scsi0 local-lvm:0,import-from=jammy-server-cloudimg-amd64.img
 ```
 
 - Rocky WSL init
