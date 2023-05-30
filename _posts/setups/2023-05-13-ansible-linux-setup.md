@@ -22,6 +22,10 @@ cat /etc/redhat-release
 ```
 
 ```bash
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorised_keys
+```
+
+```bash
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 ```
 
