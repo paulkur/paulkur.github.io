@@ -33,12 +33,12 @@ uci set network.lan.ipaddr='192.168.0.201'
 wget https://downloads.openwrt.org/releases/22.03.5/targets/x86/64/openwrt-22.03.5-x86-64-generic-ext4-combined.img.gz
 gunzip openwrt-22.03.5-x86-64-generic-ext4-combined.img.gz
 lsblk
-sudo mkfs -t ext4 /dev/sda
+sudo mkfs -t ext4 /dev/sdb
 # Write image
-dd if=openwrt-22.03.5-x86-64-generic-ext4-combined.img bs=1M of=/dev/sda
-parted /dev/sda print
-parted -s /dev/sda resizepart 2 100%
-resize2fs /dev/sda2
+dd if=openwrt-22.03.5-x86-64-generic-ext4-combined.img bs=1M of=/dev/sdb
+parted /dev/sdb print
+parted -s /dev/sdb resizepart 2 100%
+resize2fs /dev/sdb2
 ```
 
 - Installing by default

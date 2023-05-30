@@ -49,7 +49,7 @@ nano /etc/apt/sources.list.d/pve-enterprise.list
 - Update all
 
 ```bash
-apt-get update && apt dist-upgrade
+apt-get update -y && apt dist-upgrade -y
 pveam update && reboot
 ```
 
@@ -71,6 +71,10 @@ bash <(curl -s https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/
 wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
 ```
 
+```bash
+wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
+```
+
 - can do ... or better later using ansible
 
 ```bash
@@ -84,7 +88,7 @@ PermitRootLogin Yes
 PasswordAuthentication yes
 ```
 
-- Create VM template
+- Create Ubuntu-cloud VM template
 
 ```bash
 qm create 9000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
@@ -134,7 +138,7 @@ cloud_init_modules:
  - net-tools
 ```
 
-Create Template
+Create Ubuntu-cloud Template
 
 ```bash
 virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/ssh/ssh_config
@@ -142,14 +146,14 @@ virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/ssh/ssh_config
 PermitRootLogin Yes
 PasswordAuthentication yes
 # make  template
-qm create 9000 --memory 1024 --core 2 --name rocky-cloud --net0 virtio,bridge=vmbr0
-qm importdisk 9000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
-qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
-qm set 9000 --ide2 local-lvm:cloudinit
-qm set 9000 --boot c --bootdisk scsi0
-qm set 9000 --serial0 socket --vga serial0
-qm template 9000
-qm clone 9000 141 --name toshi --full
+qm create 8000 --memory 2048 --core 2 --name rocky-cloud --net0 virtio,bridge=vmbr0
+qm importdisk 8000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
+qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
+qm set 8000 --ide2 local-lvm:cloudinit
+qm set 8000 --boot c --bootdisk scsi0
+qm set 8000 --serial0 socket --vga serial0
+qm template 8000
+qm clone 8000 141 --name toshi --full
 ```
 
 ## Terraform setup [terraform proxmox providers](https://registry.terraform.io/providers/Telmate/proxmox/latest/docs)
@@ -158,7 +162,7 @@ qm clone 9000 141 --name toshi --full
 
 ```bash
 pveum role add TerraformProv -privs "Datastore.AllocateSpace Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.Cloudinit VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate VM.Monitor VM.PowerMgmt"
-pveum user add terraform-prov@pam --password natoMagic7812
+pveum user add terraform-prov@pam --password veRySeCret
 pveum aclmod / -user terraform-prov@pam -role TerraformProv
 ```
 
