@@ -88,22 +88,38 @@ PermitRootLogin Yes
 PasswordAuthentication yes
 ```
 
+- using Packer
+
+```bash
+packer validate -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy.pkr.hcl
+```
+
+```bash
+packer build -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy.pkr.hcl
+```
+
+```powershell
+packer validate -var-file='..\credentials.pkr.hcl' .\ubuntu-server-jammy.pkr.hcl
+packer build -var-file='..\credentials.pkr.hcl' .\ubuntu-server-jammy.pkr.hcl
+```
+
 - Create Ubuntu-cloud VM template
 
 ```bash
-qm create 9000 --memory 2048 --core 2 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
+qm create 9000 --memory 2048 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
 qm importdisk 9000 jammy-server-cloudimg-amd64.img local-lvm
 qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
 qm set 9000 --ide2 local-lvm:cloudinit
 qm set 9000 --boot c --bootdisk scsi0
 qm set 9000 --serial0 socket --vga serial0
-qm template 9000
-qm clone 9000 131 --name yoshi --full
 ```
 
 ```bash
-qm create 9000 --memory 2048 --net0 virtio,bridge=vmbr0 --scsihw virtio-scsi-pci
-qm set 9000 --scsi0 local-lvm:0,import-from=jammy-server-cloudimg-amd64.img
+qm template 9000
+```
+
+```bash
+qm clone 9000 131 --name yoshi --full
 ```
 
 - Rocky WSL init
@@ -121,6 +137,8 @@ Rocky Cloud image
 
 ```bash
 wget https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2
+
+wget https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base-9.2-20230513.0.x86_64.qcow2
 ```
 
 Modify image
@@ -145,14 +163,21 @@ virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/ssh/ssh_config
 # change to
 PermitRootLogin Yes
 PasswordAuthentication yes
+
 # make  template
-qm create 8000 --memory 2048 --core 2 --name rocky-cloud --net0 virtio,bridge=vmbr0
+qm create 8000 --memory 2048 --name rocky-cloud --net0 virtio,bridge=vmbr0
 qm importdisk 8000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
 qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
 qm set 8000 --ide2 local-lvm:cloudinit
 qm set 8000 --boot c --bootdisk scsi0
 qm set 8000 --serial0 socket --vga serial0
+```
+
+```bash
 qm template 8000
+```
+
+```bash
 qm clone 8000 141 --name toshi --full
 ```
 
@@ -162,8 +187,8 @@ qm clone 8000 141 --name toshi --full
 
 ```bash
 pveum role add TerraformProv -privs "Datastore.AllocateSpace Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.Cloudinit VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate VM.Monitor VM.PowerMgmt"
-pveum user add terraform-prov@pam --password veRySeCret
-pveum aclmod / -user terraform-prov@pam -role TerraformProv
+pveum user add terraform-prov@pve --password veRySeCret
+pveum aclmod / -user terraform-prov@pve -role TerraformProv
 ```
 
 - Create a new role for the future terraform user
