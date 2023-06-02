@@ -21,6 +21,12 @@ Create non-root user with sudo priv & enable ssh without need of passwd
 cat /etc/redhat-release
 ```
 
+- copyssh key
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa ansible@82.18.235.250
+```
+
 ```bash
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorised_keys
 ```
