@@ -1,6 +1,6 @@
 ---
 title: Zorro Dev and learn
-date: 2023-05-28 09:59:00 +0100
+date: 2023-06-02 07:59:00 +0100
 categories: [servers,Zorro,learn]
 tags: [code,docs,zorro,learn]     # TAG names should always be lowercase
 pin: true
@@ -10,7 +10,7 @@ pin: true
 ## Links
  
 - [Links](#links)
-  - [C++ code Snippets](#c-code-snippets)
+- [C++ code Snippets](#c-code-snippets)
 
 Useful links👇
 
@@ -27,33 +27,20 @@ Useful links👇
 
 3. When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
 
-### C++ code Snippets
+## C++ code Snippets
+
+Plot trade distribution
 
 ```cpp
+#include <profile.c>
+
 function run()
 {
-  BarPeriod = 60;  // 15 minutes per histogram bar
-  LookBack = 100;
-  StartDate = 2020;
-  EndDate = NOW;
-  asset("BTCUSDT");
-  set(PLOTNOW);
-  MaxLong = MaxShort = 1; // ONLY one dirrection
-  Capital = 10000;
+  ...
 
-  vars Prices = series(price());
-  vars slow_EMA = series(EMA(Prices,50));
-  vars fast_EMA = series(EMA(Prices,20));
-
-  if(crossOver(fast_EMA,slow_EMA))
-    enterLong();
-  if(crossUnder(fast_EMA,slow_EMA))
-    enterShort();
-
-// PLOTS
-  plot("slow_EMA", slow_EMA, LINE, RED);
-  plot("fast_EMA", fast_EMA, LINE, BLUE);
-} 
+    plotTradeProfile(-50);
+}
 ```
+
 
 [Back to Top](#links)
