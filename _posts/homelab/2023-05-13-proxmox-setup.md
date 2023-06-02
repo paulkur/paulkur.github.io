@@ -106,16 +106,16 @@ packer build -var-file='..\credentials.pkr.hcl' .\ubuntu-server-jammy.pkr.hcl
 - Create Ubuntu-cloud VM template
 
 ```bash
-qm create 9000 --memory 2048 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
-qm importdisk 9000 jammy-server-cloudimg-amd64.img local-lvm
-qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
-qm set 9000 --ide2 local-lvm:cloudinit
-qm set 9000 --boot c --bootdisk scsi0
-qm set 9000 --serial0 socket --vga serial0
+qm create 8000 --memory 2048 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
+qm importdisk 8000 jammy-server-cloudimg-amd64.img local-lvm
+qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
+qm set 8000 --ide2 local-lvm:cloudinit
+qm set 8000 --boot c --bootdisk scsi0
+qm set 8000 --serial0 socket --vga serial0
 ```
 
 ```bash
-qm template 9000
+qm template 8000
 ```
 
 ```bash
@@ -165,16 +165,16 @@ PermitRootLogin Yes
 PasswordAuthentication yes
 
 # make  template
-qm create 8000 --memory 2048 --name rocky-cloud --net0 virtio,bridge=vmbr0
-qm importdisk 8000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
-qm set 8000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-8000-disk-0
-qm set 8000 --ide2 local-lvm:cloudinit
-qm set 8000 --boot c --bootdisk scsi0
-qm set 8000 --serial0 socket --vga serial0
+qm create 9000 --memory 2048 --name rocky-cloud --net0 virtio,bridge=vmbr0
+qm importdisk 9000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
+qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
+qm set 9000 --ide2 local-lvm:cloudinit
+qm set 9000 --boot c --bootdisk scsi0
+qm set 9000 --serial0 socket --vga serial0
 ```
 
 ```bash
-qm template 8000
+qm template 9000
 ```
 
 ```bash
