@@ -172,6 +172,7 @@ curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-comp
 chmod +x ~/.docker/cli-plugins/docker-compose
 # test
 docker compose version
+export PATH="~/.docker/cli-plugins/docker-compose:$PATH"
 ```
 
 - Docker without sudo
