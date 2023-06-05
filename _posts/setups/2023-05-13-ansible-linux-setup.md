@@ -82,10 +82,15 @@ sudo nano /etc/ansible/hosts
 sudo nano /etc/hosts
 ```
 
+```bash
+PasswordAuthentication yes
+in sshd_config
+```
+
 ```text
-192.168.1.221 ubuntu
-192.168.1.231 ansible1
-192.168.1.232 ansible2
+192.168.0.61 ubuntu
+192.168.0.62 ansible1
+192.168.0.63 ansible2
 ```
 
 Copy and grant sudo rights for other nodes listed in inventory file
@@ -136,6 +141,7 @@ passwd student
 ```bash
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 echo 'student ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
+echo 'student2 ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 ```
 
 ```bash

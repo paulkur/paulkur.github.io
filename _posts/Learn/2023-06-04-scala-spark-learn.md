@@ -1,6 +1,6 @@
 ---
-title: Scala Learn
-date: 2023-05-19 10:56:00 +0100
+title: Scala/Spark Learn
+date: 2023-06-04 10:56:00 +0100
 categories: [software,learn,scala]
 tags: [software,docs,scala,learn]     # TAG names should always be lowercase
 pin: false

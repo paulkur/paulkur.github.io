@@ -9,6 +9,7 @@ pin: true
 ## Links
 
 - [Links](#links)
+- [Often used commands](#often-used-commands)
   - [Proxmox Setup](#proxmox-setup)
 - [Cloud-init setup](#cloud-init-setup)
 - [Terraform setup terraform proxmox providers](#terraform-setup-terraform-proxmox-providers)
@@ -21,13 +22,22 @@ Useful links:
 - [usefull comands](https://www.youtube.com/watch?v=lZjMxdBPH7M&t=917s)
 - [Proxmox Setup](https://www.youtube.com/watch?v=GoZaMgEgrHw)
 
-### Proxmox Setup
+## Often used commands
+
+- KILL stuck VM. get PID
+
+```bash
+ps aux | grep "/usr/bin/kvm -id VMID"
+kill -9 PID
+```
 
 - copyssh key
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa root@192.168.1.142
 ```
+
+### Proxmox Setup
 
 - non production updates
 
@@ -65,30 +75,7 @@ bash <(curl -s https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/
 
 {% include embed/youtube.html id='shiIi38cJe4&t=333s' %}
 
-- Ubuntu get cloud image
-
-```bash
-wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
-```
-
-```bash
-wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
-```
-
-- can do ... or better later using ansible
-
-```bash
-virt-edit -a jammy-server-cloudimg-amd64.img /etc/ssh/ssh_config
-```
-
-change to:
-
-```text
-PermitRootLogin Yes
-PasswordAuthentication yes
-```
-
-- using Packer
+- Using Packer
 
 ```bash
 packer validate -var-file='../credentials.pkr.hcl' ./ubuntu-server-jammy.pkr.hcl
@@ -104,6 +91,14 @@ packer build -var-file='..\credentials.pkr.hcl' .\ubuntu-server-jammy.pkr.hcl
 ```
 
 - Create Ubuntu-cloud VM template
+
+```bash
+wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+```
+
+```bash
+wget https://cloud-images.ubuntu.com/kinetic/current/kinetic-server-cloudimg-amd64.img
+```
 
 ```bash
 qm create 8000 --memory 2048 --name ubuntu-cloud --net0 virtio,bridge=vmbr0
@@ -122,18 +117,7 @@ qm template 8000
 qm clone 9000 131 --name yoshi --full
 ```
 
-- Rocky WSL init
-
-```bash
-# for WSL need to run this
-sudo apt-get install linux-image-generic
-# Install libguestfs
-apt-get install libguestfs-tools
-export EDITOR=vi # Set the Editor
-printenv | grep EDITOR # Verify
-```
-
-Rocky Cloud image
+- Create Rocky-cloud VM template
 
 ```bash
 wget https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2
@@ -141,30 +125,7 @@ wget https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCl
 wget https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base-9.2-20230513.0.x86_64.qcow2
 ```
 
-Modify image
-
 ```bash
-virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/cloud/cloud.cfg
-# change to 0
-disable_root: 0
-#add modules
-cloud_init_modules:
- - qemu-guest-agent
- - nano
- - wget
- - curl
- - net-tools
-```
-
-Create Ubuntu-cloud Template
-
-```bash
-virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/ssh/ssh_config
-# change to
-PermitRootLogin Yes
-PasswordAuthentication yes
-
-# make  template
 qm create 9000 --memory 2048 --name rocky-cloud --net0 virtio,bridge=vmbr0
 qm importdisk 9000 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 local-lvm
 qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
@@ -179,6 +140,50 @@ qm template 9000
 
 ```bash
 qm clone 8000 141 --name toshi --full
+```
+
+- To modify image
+
+```bash
+virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/cloud/cloud.cfg
+# change to 0
+disable_root: 0
+#add modules
+cloud_init_modules:
+ - qemu-guest-agent
+ - nano
+ - wget
+ - curl
+ - net-tools
+
+virt-edit -a Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 /etc/ssh/ssh_config
+# change to
+PermitRootLogin Yes
+PasswordAuthentication yes
+```
+
+- can do ... or better later using ansible
+
+```bash
+virt-edit -a jammy-server-cloudimg-amd64.img /etc/ssh/ssh_config
+```
+
+change to:
+
+```text
+PermitRootLogin Yes
+PasswordAuthentication yes
+```
+
+- Rocky WSL init
+
+```bash
+# for WSL need to run this
+sudo apt-get install linux-image-generic
+# Install libguestfs
+apt-get install libguestfs-tools
+export EDITOR=vi # Set the Editor
+printenv | grep EDITOR # Verify
 ```
 
 ## Terraform setup [terraform proxmox providers](https://registry.terraform.io/providers/Telmate/proxmox/latest/docs)

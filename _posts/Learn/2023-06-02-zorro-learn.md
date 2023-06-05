@@ -8,7 +8,7 @@ pin: true
 👇
 
 ## Links
- 
+
 - [Links](#links)
 - [C++ code Snippets](#c-code-snippets)
 
