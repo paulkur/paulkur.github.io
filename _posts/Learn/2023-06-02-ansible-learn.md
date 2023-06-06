@@ -9,7 +9,7 @@ pin: true
 ## Ansible lessons windows Managed node
 
 ```bash
-sudo dnf install python3-pip
+sudo dnf install -y python3-pip
 sudo pip3 install pywinrm
 cd windows
 ```

@@ -116,32 +116,57 @@ ansible rocky -i inventory -u root -k -m copy -a "src=/tmp/sudoers dest=/etc/sud
 
 ```bash
 # rocky
-sudo yum -y update && sudo yum -y upgrade
-sudo yum install -y openssh-server nano sshpass qemu-guest-agent curl wget git
+yum -y update && yum -y upgrade
+yum install -y openssh-server nano sshpass qemu-guest-agent curl wget git
 ```
 
 ```bash
 # ubuntu
-sudo apt-get -y update && sudo apt-get -y upgrade
-sudo apt install -y openssh-server nano sshpass qemu-guest-agent curl wget git
+apt-get -y update && apt-get -y upgrade
+apt install -y openssh-server nano sshpass qemu-guest-agent curl wget git
 ```
 
 If Managed nodes are running as root, then create new users for them
 
-```bash
-adduser ansible
-passwd ansible
+on Rocky
+
+```text
+PermitRootLogin yes
+PasswordAuthentication yes
 ```
 
 ```bash
+sudo systemctl restart sshd.service
+sudo systemctl status sshd.service
+```
+
+on Ubuntu root
+
+```bash
 adduser student
-passwd student
+```
+
+```bash
+usermod -aG sudo student
+```
+
+```bash
+nano /etc/ssh/sshd_config
+```
+
+```text
+PermitRootLogin no
+PasswordAuthentication yes
+```
+
+```bash
+sudo systemctl restart sshd
+sudo systemctl status sshd
 ```
 
 ```bash
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 echo 'student ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
-echo 'student2 ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 ```
 
 ```bash
@@ -156,28 +181,6 @@ test if works passwordless sudo
 
 ```bash
 sudo ls -la /root
-```
-
-Or allow ssh as root
-
-```bash
-sudo nano /etc/ssh/ssh_config
-```
-
-```bash
-PermitRootLogin yes
-```
-
-on Rocky
-
-```bash
-sudo systemctl restart sshd.service
-sudo systemctl status sshd.service
-```
-
-```bash
-sudo systemctl restart sshd
-sudo systemctl status sshd
 ```
 
 From ansible@control
@@ -257,11 +260,13 @@ sudo cp /tmp/sudoers /etc/sudoers.d/ansible
 ansible rocky -i inventory -u root -k -m copy -a "src=/tmp/sudoers dest=/etc/sudoers.d/ansible"
 ansible ubuntu -i inventory -u student -k -b -K -m copy -a "src=/tmp/sudoers dest=/etc/sudoers.d/ansible"
 
+ansible -i inventory  all -m command -a "ls -l /root" -b
+
 ansible-config init --disabled > ansible.cfg
 
 git clone https://github.com/sandervanvugt/ansiblecvc
 
-ansible all -m command -a "ls -l /root"
+ansible all -m command -a "ls -l /root" -b
 ```
 
 - Windows reference:
