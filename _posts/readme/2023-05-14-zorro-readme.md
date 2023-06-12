@@ -25,11 +25,10 @@ Get Data links👇
 - [Readme menu](#readme-menu)
   - [Workflow](#workflow)
   - [Data preparation](#data-preparation)
-    - [from web](#from-web)
+    - [from Web](#from-web)
     - [from coinAPI](#from-coinapi)
-  - [Environment Setup](#environment-setup)
-    - [Data](#data)
-  - [Zorro for strategy dev](#zorro-for-strategy-dev)
+  - [Data Environment Setup](#data-environment-setup)
+    - [for Zorro strategy dev](#for-zorro-strategy-dev)
   - [IN development. Don't care for now](#in-development-dont-care-for-now)
 
 ### Workflow
@@ -49,7 +48,7 @@ git push -u gitlab main
 
 ### Data preparation
 
-#### from web
+#### from Web
 
 > Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
 {: .prompt-warning }
@@ -71,14 +70,12 @@ git push -u gitlab main
 - in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
 - first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
-### Environment Setup
+### Data Environment Setup
 
 Clone repo. Use the link stored in Bitwarden secure note called `Clone Zorro`. It contains secure token.
 
 > Rob ! on your Windows home server, there is already Spark cluster running! Can skip it, but if you want to be able to run Spark on your mac and have flexibility to do stuff not only at home, feel free to setup your mac with Docker ar Spark cluster.
 {: .prompt-warning }
-
-#### Data
 
 Spark Cluster Setup (without Docker now)
 
@@ -125,7 +122,7 @@ docker compose up -d --scale spark-worker=3
 
 [Back to Top](#readme-menu)
 
-### Zorro for strategy dev
+#### for Zorro strategy dev
 
 > Easiest setup is Windows, so following instructions is for Windows ONLY. It's possible to run Zorro on macOS / Linux with Wine, but will not cover in here for now
 {: .prompt-warning }
@@ -151,6 +148,13 @@ When you want to run any script (example CSVtoHistory) you need to move file fro
 [Back to Top](#readme-menu)
 
 ### IN development. Don't care for now
+
+GitLab runners tags
+
+```text
+rob-win-runner
+rob, win, serv
+```
 
 Setup windows dev environment for C++
 

@@ -9,6 +9,20 @@ math: true
 mermaid: true
 ---
 
+
+## usefull emoji's
+
+full list can be found [Here](https://gist.github.com/rxaviers/7360908) and for markdown [here](https://github.com/ikatyang/emoji-cheat-sheet)
+
+💥 👉 👈 👇 ☝️ 📌 📆  📈  📘 📒 📕 📗 📓 🔬 🔖 💡 📢  🔍 🔋 🔧 🎉 ⚡ ☁️ 🐍 🐼 🐌 
+
+🐳 🔥 ❗ ❓ ⭐ 💨 💦 👽 👍💪 🙈  🙉 🙊 👀 🚀 🌝 🏁 🔑 🔒 🕙 💯 ✔️ ✅ 🔗
+
+markdown:
+
+🪙 📎  📂 
+
+
 This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
 ## Headings
