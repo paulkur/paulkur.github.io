@@ -24,10 +24,10 @@ Get Data links👇
 
 - [Readme menu](#readme-menu)
   - [Workflow](#workflow)
+  - [Data Environment Setup](#data-environment-setup)
   - [Data preparation](#data-preparation)
     - [from Web](#from-web)
     - [from coinAPI](#from-coinapi)
-  - [Data Environment Setup](#data-environment-setup)
     - [for Zorro strategy dev](#for-zorro-strategy-dev)
   - [IN development. Don't care for now](#in-development-dont-care-for-now)
 
@@ -45,30 +45,6 @@ git push -u origin <branch_name> # will push to Github
 git push -u gitlab <branch_name> # will push to GitLab
 git push -u gitlab main
 ```
-
-### Data preparation
-
-#### from Web
-
-> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
-{: .prompt-warning }
-
-- Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
-- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
-- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
-- in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
-- first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
-
-#### from coinAPI
-
-> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
-{: .prompt-warning }
-
-- Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
-- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
-- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
-- in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
-- first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
 ### Data Environment Setup
 
@@ -119,6 +95,32 @@ chmod +x build-images.sh
 ```bash
 docker compose up -d --scale spark-worker=3
 ```
+
+[Back to Top](#readme-menu)
+
+### Data preparation
+
+#### from Web
+
+> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
+{: .prompt-warning }
+
+- Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
+- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
+- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
+- in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
+- first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
+
+#### from coinAPI
+
+> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
+{: .prompt-warning }
+
+- Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
+- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
+- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
+- in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
+- first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
 [Back to Top](#readme-menu)
 
