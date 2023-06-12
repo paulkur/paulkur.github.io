@@ -25,11 +25,11 @@ Get Data links👇
 - [Readme menu](#readme-menu)
   - [Workflow](#workflow)
   - [Cleaning Data](#cleaning-data)
-  - [To download and clean CSV from web](#to-download-and-clean-csv-from-web)
+  - [download and clean CSV from web](#download-and-clean-csv-from-web)
   - [Project Setup for data](#project-setup-for-data)
     - [macOS / Linux](#macos--linux)
     - [Windows](#windows)
-  - [Zorro setup](#zorro-setup)
+  - [Zorro setup for strategy](#zorro-setup-for-strategy)
 - [IN development](#in-development)
 
 ### Workflow
@@ -49,30 +49,28 @@ git push -u gitlab main
 
 ### Cleaning Data
 
+> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
+{: .prompt-warning }
+
 - Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
 
-### To download and clean CSV from web
+### download and clean CSV from web
 
-- Go [Here](https://www.cryptodatadownload.com/data/binance/) and create free account if have one - login.
-- in section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
+- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
+- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
 - in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
 - first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
 
+
+
 ### Project Setup for data
 
-1. Clone repo. Use the link stored in Bitwarden secure note called `Clone Zorro`. It contains secure token.
-
-2. Extract Zorro zip
+Clone repo. Use the link stored in Bitwarden secure note called `Clone Zorro`. It contains secure token.
 
 #### macOS / Linux
 
-```bash
-unzip Zorro.zip -d ./
-rm Zorro.zip
-```
-
-3. Prepare Spark cluster
+- Prepare Spark cluster
 
 ```bash
 cd scala-spark
@@ -92,22 +90,18 @@ docker compose up -d --scale spark-worker=3
 
 #### Windows
 
-Windows OLNY!
-
-Hadoop setup
+> Windows OLNY! Hadoop setup
+{: .prompt-warning }
 
 - download Hadoop version 3.2.* [from here](https://github.com/cdarlint/winutils)
 - unzip Hadoop in `C:\` easy accessable place
 - set system environment variable:
   - `HADOOP_HOME` and `C:\hadoop-3.2.2`
   - then for PATH: `%HADOOP_HOME%\bin`
+might need to reboot.
 
-```powershell
-Expand-Archive -Path "Zorro.zip"
-Remove-Item -Path "Zorro.zip"
-```
-
-might need to reboot. Next follows same as for Macs or Linux
+> Same as for Macs or Linux from here on
+{: .prompt-info }
 
 ```powershell
 cd scala-spark
@@ -127,13 +121,29 @@ docker compose up -d --scale spark-worker=3
 
 [Back to Top](#readme-menu)
 
-### Zorro setup
+### Zorro setup for strategy
 
-1. Copy Zorro.ini file to `c:\Users\<username>\Zorro\History\`
+> Easiest setup is Windows, so following instructions is for Windows ONLY. It's possible to run Zorro on macOS / Linux with Wine, but will not cover in here for now.
+{: .prompt-warning }
 
-2. [Download Data files Here](https://drive.google.com/drive/folders/18pgkha-lJdYKEz5vwGyM9AoOzfD6pXoG?usp=share_link) and unzip it in: `c:\Users\<username>\Zorro\History\`
+Extract `Zorro.zip` from project root dir.
 
-3. When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
+```powershell
+Expand-Archive -Path "Zorro.zip"
+Remove-Item -Path "Zorro.zip"
+```
+
+1. Copy Zorro.ini file to `\<PROJECT_ROOT_DIR>\Zorro\History\`
+
+2. [Download wanted/needed .t6 Data files Here](https://drive.google.com/drive/folders/18pgkha-lJdYKEz5vwGyM9AoOzfD6pXoG?usp=share_link) and unzip it in: `\<PROJECT_ROOT_DIR>\Zorro\History\`
+
+3. Open Zorro from `\<PROJECT_ROOT_DIR>\Zorro\Zorro.exe` and run a test drive `test_plot` script.
+
+> All unzipped `Zorro` folder is .gitignored, so don't worry of `.t6` data uploads or `Strategy` scripts inside.
+{: .prompt-info }
+
+
+When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
 
 
 [Back to Top](#readme-menu)
