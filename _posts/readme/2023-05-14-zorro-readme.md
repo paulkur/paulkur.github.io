@@ -24,13 +24,13 @@ Get Data links👇
 
 - [Readme menu](#readme-menu)
   - [Workflow](#workflow)
-  - [Cleaning Data](#cleaning-data)
-  - [download and clean CSV from web](#download-and-clean-csv-from-web)
-  - [Project Setup for data](#project-setup-for-data)
-    - [macOS / Linux](#macos--linux)
-    - [Windows](#windows)
-  - [Zorro setup for strategy](#zorro-setup-for-strategy)
-- [IN development](#in-development)
+  - [Data preparation](#data-preparation)
+    - [from web](#from-web)
+    - [from coinAPI](#from-coinapi)
+  - [Environment Setup](#environment-setup)
+    - [Data](#data)
+  - [Zorro for strategy dev](#zorro-for-strategy-dev)
+  - [IN development. Don't care for now](#in-development-dont-care-for-now)
 
 ### Workflow
 
@@ -47,48 +47,40 @@ git push -u gitlab <branch_name> # will push to GitLab
 git push -u gitlab main
 ```
 
-### Cleaning Data
+### Data preparation
+
+#### from web
 
 > Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
 {: .prompt-warning }
 
 - Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
-
-### download and clean CSV from web
-
 - Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
 - In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
 - in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
 - first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
+#### from coinAPI
 
+> Sorry for not so "sexy" setup at the moment. Just being in a rush for now.
+{: .prompt-warning }
 
+- Location for downloaded and data that we have and no need to download can be found in Google Drive under: `\Shared drives\HPDA shared drive\Resources\zorro-data\from-web\` path and navigate to see what we have so far.
+- Go [Crypto Data download.com link](https://www.cryptodatadownload.com/data/binance/). Create free account if have one - login.
+- In section `SYMBOL LIST AND FILES FOR BINANCE SPOT HOURLY/MINUTE TIMEFRAME(S)` Search for `BTCUSDT` and download `minute` `.csv` file. Try to save dirrectly in projects `raw` folder that should look somethink like this: `...\<PROJECT_REPO_LOCATION>\scala-spark\src\main\resources\data\raw`.
+- in CSV file, the first line is disturbing - just delete manualy this text `https://www.CryptoDataDownload.com`
+- first CSV file line have to be `unix,date,symbol,open,high,low,close,Volume BTC,Volume USDT,tradecount`
 
-### Project Setup for data
+### Environment Setup
 
 Clone repo. Use the link stored in Bitwarden secure note called `Clone Zorro`. It contains secure token.
 
-#### macOS / Linux
+> Rob ! on your Windows home server, there is already Spark cluster running! Can skip it, but if you want to be able to run Spark on your mac and have flexibility to do stuff not only at home, feel free to setup your mac with Docker ar Spark cluster.
+{: .prompt-warning }
 
-- Prepare Spark cluster
+#### Data
 
-```bash
-cd scala-spark
-docker compose up -d
-```
-
-```bash
-cd spark-cluster
-ls
-chmod +x build-images.sh
-./build-images.sh
-```
-
-```bash
-docker compose up -d --scale spark-worker=3
-```
-
-#### Windows
+Spark Cluster Setup (without Docker now)
 
 > Windows OLNY! Hadoop setup
 {: .prompt-warning }
@@ -100,33 +92,45 @@ docker compose up -d --scale spark-worker=3
   - then for PATH: `%HADOOP_HOME%\bin`
 might need to reboot.
 
-> Same as for Macs or Linux from here on
-{: .prompt-info }
-
-```powershell
+```bash
 cd scala-spark
+```
+
+```bash
 docker compose up -d
 ```
 
-```powershell
-cd spark-cluster
-ls
-chmod +x build-images.sh
-.\build-images.sh
+```bash
+cd spark-cluster && ls
 ```
 
+```bash
+chmod +x build-images.sh
+./build-images.sh
+```
+
+> Windows
+{: .prompt-info }
+
 ```powershell
+.\build-images.bat
+```
+
+> If you have more power in your PC can give more or less workers. 1 worker: 1gb RAM, 1 CPU core. 3 does the job
+{: .prompt-info }
+
+```bash
 docker compose up -d --scale spark-worker=3
 ```
 
 [Back to Top](#readme-menu)
 
-### Zorro setup for strategy
+### Zorro for strategy dev
 
-> Easiest setup is Windows, so following instructions is for Windows ONLY. It's possible to run Zorro on macOS / Linux with Wine, but will not cover in here for now.
+> Easiest setup is Windows, so following instructions is for Windows ONLY. It's possible to run Zorro on macOS / Linux with Wine, but will not cover in here for now
 {: .prompt-warning }
 
-Extract `Zorro.zip` from project root dir.
+Extract `Zorro.zip` from project root dir
 
 ```powershell
 Expand-Archive -Path "Zorro.zip"
@@ -142,13 +146,11 @@ Remove-Item -Path "Zorro.zip"
 > All unzipped `Zorro` folder is .gitignored, so don't worry of `.t6` data uploads or `Strategy` scripts inside.
 {: .prompt-info }
 
-
 When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
-
 
 [Back to Top](#readme-menu)
 
-## IN development
+### IN development. Don't care for now
 
 Setup windows dev environment for C++
 
@@ -165,33 +167,61 @@ then
 pacman -S mingw-w64-x86_64-gcc
 ```
 
-First we will download and install msys2.
-After that we use the series of commands to install packages and update system.
+First we will download and install `msys2`. After that we use the series of commands to install packages and update system.
 
-Commands used :
-Update the package database and base packages using
+Update the package database and base packages:
+
+```powershell
 pacman -Syu
+```
 
-Update rest of the base packages
+Update rest of the base packages:
+
+```powershell
 pacman -Su
+```
 
-Now open up the Msys MinGW terminal
-To install gcc and g++ for C and C++
+- Open Msys MinGW terminal. To install gcc and g++ for C and C++:
+
 For 64 bit
+
+```powershell
 pacman -S mingw-w64-x86_64-gcc
+```
+
 For 32 bit
+
+```powershell
 pacman -S mingw-w64-i686-gcc
+```
 
-To install the debugger ( gdb ) for C and C++
+- To install the debugger ( gdb ) for C and C++
+
 For 64 bit
-pacman -S mingw-w64-x86_64-gdb
-For 32 bit
-pacman -S mingw-w64-i686-gdb
 
-To check
+```powershell
+pacman -S mingw-w64-x86_64-gdb
+```
+
+For 32 bit
+
+```powershell
+pacman -S mingw-w64-i686-gdb
+```
+
+- To check:
+
+```powershell
 gcc version : gcc --version
+```
+
+```powershell
 g++ version : g++ --version
+```
+
+```powershell
 gdb version : gdb --version
+```
 
 After installing these programs, we need to set the Path environment variable.
 
