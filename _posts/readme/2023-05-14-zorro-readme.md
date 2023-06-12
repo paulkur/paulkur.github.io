@@ -61,11 +61,7 @@ git push -u gitlab main
 
 ### Project Setup for data
 
-1. Clone repo
-
-```bash
-git clone https://github.com/paulkur/zorro.git
-```
+1. Clone repo. Use the link stored in Bitwarden secure note called `Clone Zorro`. It contains secure token.
 
 2. Extract Zorro zip
 
