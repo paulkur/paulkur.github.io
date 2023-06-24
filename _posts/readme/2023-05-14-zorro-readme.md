@@ -23,7 +23,8 @@ Get Data links👇
 ## Readme menu
 
 - [Readme menu](#readme-menu)
-  - [Workflow](#workflow)
+- [Strategy links](#strategy-links)
+- [Git Workflow](#git-workflow)
   - [Data Environment Setup](#data-environment-setup)
   - [Data preparation](#data-preparation)
     - [from Web](#from-web)
@@ -31,19 +32,75 @@ Get Data links👇
     - [for Zorro strategy dev](#for-zorro-strategy-dev)
   - [IN development. Don't care for now](#in-development-dont-care-for-now)
 
-### Workflow
+## Strategy links
+
+- [robs-win-serv](http://81.100.196.142/log_EMA.htm)
+
+```text
+http://81.100.196.142/
+```
+
+add strategy name at the end : example:
+
+```text
+http://81.100.196.142/log_EMA.htm
+```
+
+- [aws-win-serv](http://35.177.126.163/log_EMA.htm)
+
+```text
+http://35.177.126.163/
+```
+
+add strategy name at the end : example:
+
+```text
+http://35.177.126.163/log_EMA.htm
+```
+
+## Git Workflow
 
 Create new branch and do your work
 
 ```bash
 git checkout -b <new-branch-name> ## examples: paulk-dev-branch, update-ip
-git checkout -b robs-dev-branch 
+```
+
+```bash
+git checkout -b robs-dev-branch
+```
+
+```bash
 git status
+```
+
+```bash
 git add .
-git commit -m "adding coinapi connection" ## examples: "adding proxmox VMs"
-git push -u origin <branch_name> # will push to Github
-git push -u gitlab <branch_name> # will push to GitLab
+```
+
+```bash
+git commit -m "initial commit"
+```
+
+```bash
+git commit -m "adding coinapi connection"
+```
+
+```bash
+git push -u origin main
+```
+
+```bash
 git push -u gitlab main
+```
+
+```bash
+git push -u github main
+```
+
+```bash
+git push -u origin <branch_name>
+git push -u gitlab <branch_name>
 ```
 
 ### Data Environment Setup
