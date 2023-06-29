@@ -6,6 +6,45 @@ tags: [hadoop,servers,docs,lessons,setup]     # TAG names should always be lower
 pin: true
 ---
 
+## Install Hadoop ubuntu
+
+- zrc commands
+
+```bash
+## Hadoop
+alias hdphome="cd /usr/local/hadoop/"
+alias hdpstart="sbin/start-all.sh"
+alias hdpstop="sbin/stop-all.sh"
+```
+
+- More detailed copy/paste instructions [here](https://www.geeksforgeeks.org/how-to-install-hadoop-in-linux/)
+- Single node setup [here](https://hadoop.apache.org/docs/r3.3.5/hadoop-project-dist/hadoop-common/SingleCluster.html)
+- Cluster setup [here](https://hadoop.apache.org/docs/r3.3.5/hadoop-project-dist/hadoop-common/ClusterSetup.html)
+- Download from [here](https://dlcdn.apache.org/hadoop/common/)
+
+ports:
+
+[core-site port 9000](http://localhost:9000/)
+[namenode port 50070](http://localhost:50070/)
+
+[cluster NodeManager port 8088](http://localhost:8088/cluster)
+
+```bash
+wget https://dlcdn.apache.org/hadoop/common/stable/hadoop-3.3.6.tar.gz
+```
+
+```bash
+tar -zxvf hadoop-3.3.6.tar.gz
+```
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+```
+
+```bash
+export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
+```
+
 ## Hadoop lessons
 
 ```bash
@@ -94,19 +133,4 @@ docker run -d -p 9001:9000 -p 8001:8000 --name portainer --restart always -v /va
 docker restart portainer
 ```
 
-```bash
-ansible win -m win_ping
-
-cp ../ansiblecvc/ansible.cfg .
-
-ansible tower -m user -a "name=ansible" -u root -k
-ansible tower -m command -a "id"
-ansible tower -m command -a "ls -la /root"
-```
-
-## 👇 Lesson 2: Using Ad-hoc Commands
-
-```bash
-ansible -i inventory windows -m ansible.windows.win_ping
-ansible -i inventory all -m ansible.builtin.command -a reboot
-```
+[Back to Top](#menu)
