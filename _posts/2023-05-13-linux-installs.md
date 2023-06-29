@@ -31,6 +31,26 @@ alias mkenv="virtualenv"
 alias listpyenv="py -m site"
 ```
 
+- webmin
+
+```bash
+wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
+sudo dpkg -i webmin_2.000_all.deb 
+sudo apt -f install
+sudo reboot
+```
+
+- vscode
+
+```bash
+curl -fsSL https://code-server.dev/install.sh | sh
+```
+
+```bash
+chmod 755 ./install_vscode.sh
+./install_vscode.sh
+```
+
 - Ansible
 
 ```bash
@@ -88,13 +108,6 @@ $ sudo apt --purge remove zsh
 $ chsh -s $(which "SHELL NAME")
 ```
 
-- vscode
-
-```bash
-chmod 755 ./install_vscode.sh
-./install_vscode.sh
-```
-
 - FTP server
 
 ```bash
@@ -121,14 +134,7 @@ docker pull vaultwarden/server:latest
 docker run -d --name vaultwarden -v /vw-data/:/data/ -p 80:80 vaultwarden/server:latest
 ```
 
-- webmin
 
-```bash
-wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
-sudo dpkg -i webmin_2.000_all.deb 
-sudo apt -f install
-sudo reboot
-```
 
 - IOTStack
 
