@@ -38,6 +38,26 @@ tar -zxvf hadoop-3.3.6.tar.gz
 ```
 
 ```bash
+sudo apt install default-jdk
+```
+
+findout PATH
+
+```bash
+which java
+```
+
+export PATH
+
+```bash
+export PATH="/usr/bin/java:$PATH"
+```
+
+```bash
+echo $PATH
+```
+
+```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ```
 
