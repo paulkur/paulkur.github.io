@@ -24,16 +24,19 @@ alias hdpstop="sbin/stop-all.sh"
 
 localhosts:
 - [core-site port 9000](http://localhost:9000/)
+- [core-site port 2 9870](http://localhost:9870/)
 - [namenode port 50070](http://localhost:50070/)
 - [cluster NodeManager port 8088](http://localhost:8088/cluster)
 
 localhosts on prox:
 - [core-site port 9000](http://192.168.0.19:9000/)
+- [core-site port 2 9870](http://192.168.0.19:9870/)
 - [namenode port 50070](http://192.168.0.19:50070/)
 - [cluster NodeManager port 8088](http://192.168.0.19:8088/cluster)
 
 external on prox:
 - [core-site port 9000](http://80.2.129.22:9000/)
+- [core-site 2 port 9870](http://80.2.129.22:9870/)
 - [namenode port 50070](http://80.2.129.22:50070/)
 - [cluster NodeManager port 8088](http://80.2.129.22:8088/cluster)
 
@@ -205,8 +208,6 @@ jps
 start-all.sh
 stop-all.sh
 ```
-
-
 
 ### win commands
 
