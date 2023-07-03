@@ -68,15 +68,16 @@ export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 ## Hadoop lessons
 
 ```bash
-sudo nano hadoop-env.sh
+sudo nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
-```bash
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-```
+add JAVA_HOME
 
 ```bash
-export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
+# The java implementation to use. By default, this environment
+# variable is REQUIRED on ALL platforms except OS X!
+# export JAVA_HOME=
+export JAVA_HOME=/usr/bin/java
 ```
 
 ```bash
@@ -88,7 +89,9 @@ sudo nano /usr/local/hadoop/etc/hadoop/core-site.xml
 <name>fs.defaultFS</name>
 <value>hdfs://localhost:9000</value>
 </property>
+```
 
+```xml
 <property>
 <name>hadoop.tmp.dir</name>
 <value>/usr/local/hadoop/tmp</value>
@@ -102,16 +105,15 @@ sudo nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```xml
 <configuration>
   <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>/home/paul/hadoop-data/namenode</value>
-  </property>
-  
-  <property>
     <name>dfs.replication</name>
     <value>1</value>
   </property>
-</configuration>
 
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/home/nuggetuser/hadoop-data/namenode</value>
+  </property>
+</configuration>
 ```
 
 ```bash
