@@ -22,10 +22,20 @@ alias hdpstop="sbin/stop-all.sh"
 - Cluster setup [here](https://hadoop.apache.org/docs/r3.3.5/hadoop-project-dist/hadoop-common/ClusterSetup.html)
 - Download from [here](https://dlcdn.apache.org/hadoop/common/)
 
-ports:
+localhosts:
 - [core-site port 9000](http://localhost:9000/)
 - [namenode port 50070](http://localhost:50070/)
 - [cluster NodeManager port 8088](http://localhost:8088/cluster)
+
+localhosts on prox:
+- [core-site port 9000](http://192.168.0.19:9000/)
+- [namenode port 50070](http://192.168.0.19:50070/)
+- [cluster NodeManager port 8088](http://192.168.0.19:8088/cluster)
+
+external on prox:
+- [core-site port 9000](http://80.2.129.22:9000/)
+- [namenode port 50070](http://80.2.129.22:50070/)
+- [cluster NodeManager port 8088](http://80.2.129.22:8088/cluster)
 
 ```bash
 wget https://dlcdn.apache.org/hadoop/common/stable/hadoop-3.3.6.tar.gz
