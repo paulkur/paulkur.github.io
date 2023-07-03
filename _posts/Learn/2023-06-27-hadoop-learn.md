@@ -23,10 +23,9 @@ alias hdpstop="sbin/stop-all.sh"
 - Download from [here](https://dlcdn.apache.org/hadoop/common/)
 
 ports:
-
-[core-site port 9000](http://localhost:9000/)
-[namenode port 50070](http://localhost:50070/)
-[cluster NodeManager port 8088](http://localhost:8088/cluster)
+- [core-site port 9000](http://localhost:9000/)
+- [namenode port 50070](http://localhost:50070/)
+- [cluster NodeManager port 8088](http://localhost:8088/cluster)
 
 ```bash
 wget https://dlcdn.apache.org/hadoop/common/stable/hadoop-3.3.6.tar.gz
