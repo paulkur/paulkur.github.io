@@ -27,6 +27,12 @@ cat /etc/redhat-release
 ssh-copy-id -i ~/.ssh/id_rsa ansible@82.18.235.250
 ```
 
+specific different port
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa -p 27 nuggetuser@80.2.129.22
+```
+
 ```bash
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorised_keys
 ```
