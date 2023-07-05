@@ -12,10 +12,23 @@ pin: true
 
 ```bash
 ## Hadoop
-alias hdphome="cd /usr/local/hadoop/"
-alias hdpstart="sbin/start-all.sh"
-alias hdpstop="sbin/stop-all.sh"
-alias hdpenv="sudo nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh"
+alias hdpstart="/usr/local/hadoop/sbin/start-all.sh"
+alias hdpstop="/usr/local/hadoop/sbin/stop-all.sh"
+alias hdpstartdfs="/usr/local/hadoop/sbin/start-dfs.sh"
+alias hdpstopdfs="/usr/local/hadoop/sbin/stop-dfs.sh"
+alias hdpfs="hadoop fs"
+# -moveFromLocal
+# -copyToLocal
+alias hdpmd="hadoop fs -mkdir -p /user/nuggetuser/"
+alias hdpmdp="hadoop fs -mkdir -p hdfs://hnname:9000/data/small"
+# yarn --daemon start resourcemanager
+```
+
+```bash
+hadoop fs -mkdir -p hdfs://hnname:9000/data/small
+hadoop fs -moveFromLocal /home/nuggetuser/data/small/BTCUSDT_2023.csv hdfs://hnname:9000/data/small/BTCUSDT_2023.csv
+hadoop fs -copyToLocal hdfs://hnname:9000/data/small/BTCUSDT_2023.csv /home/nuggetuser/data/small/btcusdt_2023.csv
+hadoop fs -put /home/nuggetuser/data/prices hdfs://hnname:9000/data/big
 ```
 
 sudo apt-get install openjdk-11-jdk
