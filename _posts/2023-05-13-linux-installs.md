@@ -63,6 +63,10 @@ ansible --version
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
+
+# Rocky
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
+
 sh ./Miniconda3-py39_4.12.0-Linux-x86_64.sh
 export PATH=~/miniconda3/bin:$PATH
 conda --version
