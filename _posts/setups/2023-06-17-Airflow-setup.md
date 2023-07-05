@@ -36,6 +36,12 @@ conda activate airflow_env
 
 ```bash
 pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-no-providers-3.9.txt"
+pip install -r requirements.txt
+# OR with all providers
+pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-3.9.txt"
+pip install -r requirements.txt
+pip install apache-airflow-providers-postgres==3.0.0
+pip show apache-airflow-providers-postgres
 ```
 
 - initiate airflow database
