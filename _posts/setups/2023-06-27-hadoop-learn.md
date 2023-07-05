@@ -12,16 +12,28 @@ pin: true
 
 ```bash
 ## Hadoop
+alias hdphome="cd /usr/local/hadoop/"
+alias hdpenv="sudo nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh"
+alias hdpcore="sudo nano /usr/local/hadoop/etc/hadoop/core-site.xml"
+alias hdphdfs="sudo nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml"
+alias hdpmapred="sudo nano /usr/local/hadoop/etc/hadoop/mapred-site.xml"
+alias hdpyarn="sudo nano /usr/local/hadoop/etc/hadoop/yarn-site.xml"
+alias hdpformat="hdfs namenode -format"
+alias hdpstop2="hdfs --daemon stop secondarynamenode"
+
+#
 alias hdpstart="/usr/local/hadoop/sbin/start-all.sh"
 alias hdpstop="/usr/local/hadoop/sbin/stop-all.sh"
 alias hdpstartdfs="/usr/local/hadoop/sbin/start-dfs.sh"
+alias hdpstartyarn="/usr/local/hadoop/sbin/start-yarn.sh"
 alias hdpstopdfs="/usr/local/hadoop/sbin/stop-dfs.sh"
 alias hdpfs="hadoop fs"
-# -moveFromLocal
+# -moveFromLocal 
 # -copyToLocal
 alias hdpmd="hadoop fs -mkdir -p /user/nuggetuser/"
 alias hdpmdp="hadoop fs -mkdir -p hdfs://hnname:9000/data/small"
 # yarn --daemon start resourcemanager
+# hdfs --daemon start datanode
 ```
 
 ```bash
