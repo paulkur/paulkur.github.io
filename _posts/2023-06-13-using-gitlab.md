@@ -140,6 +140,10 @@ prox-win-runner
 prox-lnx-runner
 ```
 
+```bash
+rocky-control-ansible-prox
+```
+
 - Rob
 
 ```bash
@@ -174,6 +178,10 @@ prox, win, shell, serv
 
 ```bash
 prox, lnx, shell, serv
+```
+
+```bash
+prox, rocky, control, ansible
 ```
 
 - Rob
@@ -221,18 +229,18 @@ think-local-win-shell
 - Optional maintenance note for the runner:
 
 ```bash
-    The runner is using shell executor
+The runner is using shell executor
 ```
 
 ```bash
-    The runner is using docker executor
+The runner is using docker executor
 ```
 
 - Executor: `shell` or `docker`
 - Start/Stop/Status
 
 ```bash
-    sudo gitlab-runner start
+sudo gitlab-runner start
 ```
 
 ```powershell
@@ -244,7 +252,7 @@ think-local-win-shell
 ```
 
 ```bash
-    sudo gitlab-runner stop
+sudo gitlab-runner stop
 ```  
 
 - If will later install docker executor, then add to docker group

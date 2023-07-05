@@ -80,7 +80,6 @@ lsof -i tcp:8080
 lsof -i tcp:8793
 ```
 
-
 note: After any airflow.cfg editing, need to reset airflow db
 
 ```bash
@@ -95,6 +94,7 @@ sudo firewall-cmd --add-port=8080/tcp --permanent
 # maybe not needed
 sudo firewall-cmd --add-port=8793/tcp --permanent
 sudo firewall-cmd --add-port=5432/tcp --permanent
+sudo firewall-cmd --add-port=24/tcp --permanent
 ```
 
 reload
