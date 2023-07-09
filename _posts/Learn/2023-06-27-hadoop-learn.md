@@ -146,13 +146,4 @@ stop-all.sh
 
 /home/paul/hadoop-data/namenode
 
-### win commands
-
-move portainer to different port
-
-```bash
-docker run -d -p 9001:9000 -p 8001:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-docker restart portainer
-```
-
 [Back to Top](#menu)
