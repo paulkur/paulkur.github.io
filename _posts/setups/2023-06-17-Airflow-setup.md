@@ -12,10 +12,102 @@ Useful links:
 
 ### Links
 
+- [raw Airflow install/Start on server](#raw-airflow-installstart-on-server)
 - [Local Airflow Starting commands](#local-airflow-starting-commands)
 - [Workflow](#workflow)
 - [Project init](#project-init)
 - [Gitlab \& Github sync](#gitlab--github-sync)
+
+## raw Airflow install/Start on server
+
+- Create a Python Virtual Environment for Apache Airflow
+
+```bash
+conda create --name airflow_env python=3.9 -y
+```
+
+- activate airflow_env
+
+```bash
+conda activate airflow_env
+```
+
+- Install Apache Airflow
+
+```bash
+pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-no-providers-3.9.txt"
+pip install -r requirements.txt
+# OR with all providers
+pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-3.9.txt"
+pip install -r requirements.txt
+pip install apache-airflow-providers-postgres==3.0.0
+pip show apache-airflow-providers-postgres
+```
+
+- initiate airflow database
+
+```bash
+airflow db init
+```
+
+- create new admin user
+
+```bash
+airflow users create \
+    --username paul \
+    --firstname Paul \
+    --lastname Kurpis \
+    --role Admin \
+    --email paulkurpis@gmail.com \
+    --password natoMagic7812
+```
+
+- start webserver and scheduler
+
+```bash
+conda activate airflow_env
+```
+
+```bash
+airflow webserver -D
+```
+
+```bash
+airflow scheduler -D
+```
+
+- check if processes running
+
+```bash
+lsof -i tcp:8080
+```
+
+```bash
+lsof -i tcp:8793
+```
+
+note: After any airflow.cfg editing, need to reset airflow db
+
+```bash
+airflow db reset
+```
+
+- Rocky linux firewall rules add
+
+```bash
+sudo firewall-cmd --add-port=10000/tcp --permanent
+sudo firewall-cmd --add-port=8080/tcp --permanent
+# maybe not needed
+sudo firewall-cmd --add-port=8793/tcp --permanent
+sudo firewall-cmd --add-port=5432/tcp --permanent
+sudo firewall-cmd --add-port=24/tcp --permanent
+```
+
+reload
+
+```bash
+sudo firewall-cmd --reload
+```
 
 ## Local Airflow Starting commands
 
