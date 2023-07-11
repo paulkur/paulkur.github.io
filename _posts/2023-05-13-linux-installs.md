@@ -16,6 +16,12 @@ apt-get install -y openssh-server qemu-guest-agent nano curl wget git
 shutdown -h now
 ```
 
+Rocky
+
+```bash
+dnf update -y
+```
+
 - Python
 
 ```bash
@@ -38,6 +44,24 @@ wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
 sudo dpkg -i webmin_2.000_all.deb 
 sudo apt -f install
 sudo reboot
+```
+
+Rocky
+
+```bash
+sudo dnf install wget tar perl -y
+```
+
+```bash
+wget wget https://www.webmin.com/download/webmin-current.tar.gz
+```
+
+```bash
+tar xvf webmin-current.tar.gz
+sudo mkdir -p /usr/local/webmin
+sudo ./webmin-XXX/setup.sh /usr/local/webmin/
+sudo firewall-cmd --add-port=10000/tcp --permanent
+sudo firewall-cmd --reload
 ```
 
 - vscode
@@ -71,6 +95,19 @@ sh ./Miniconda3-py39_4.12.0-Linux-x86_64.sh
 export PATH=~/miniconda3/bin:$PATH
 conda --version
 conda update --all
+```
+
+Rocky
+
+```bash
+dnf update -y
+dnf install libXi libXtst libXrandr libXcursor alsa-lib mesa-libEGL libXcomposite libXScrnSaver libXdamage mesa-libGL -y
+```
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Anaconda3-2021.11-Linux-x86_64.sh
+source .bashrc
 ```
 
 - Notebook
@@ -137,8 +174,6 @@ sudo systemctl restart vsftpd.service
 docker pull vaultwarden/server:latest
 docker run -d --name vaultwarden -v /vw-data/:/data/ -p 80:80 vaultwarden/server:latest
 ```
-
-
 
 - IOTStack
 

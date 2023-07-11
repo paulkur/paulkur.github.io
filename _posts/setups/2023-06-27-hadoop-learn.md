@@ -29,7 +29,7 @@ alias hdpstartyarn="/usr/local/hadoop/sbin/start-yarn.sh"
 alias hdpstopdfs="/usr/local/hadoop/sbin/stop-dfs.sh"
 alias hdpfs="hadoop fs"
 # -moveFromLocal 
-# -copyToLocal
+# -copyToLocal 
 alias hdpmd="hadoop fs -mkdir -p /user/nuggetuser/"
 alias hdpmdp="hadoop fs -mkdir -p hdfs://hnname:9000/data/small"
 # yarn --daemon start resourcemanager

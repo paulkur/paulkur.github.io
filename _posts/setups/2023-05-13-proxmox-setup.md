@@ -34,7 +34,7 @@ kill -9 PID
 - copyssh key
 
 ```bash
-ssh-copy-id -i ~/.ssh/id_rsa root@192.168.1.142
+ssh-copy-id -i ~/.ssh/id_rsa root@192.168.1.141
 ```
 
 ### Proxmox Setup
@@ -261,8 +261,8 @@ nano /etc/fstab
 df -h
 mount -a
 ```
-/dev/disk/by-uuid/550940b4-9e24-48af-bb92-86b9567f0029  /mnt/backups  exfat    defaults    0
 
+/dev/disk/by-uuid/550940b4-9e24-48af-bb92-86b9567f0029  /mnt/backups  exfat    defaults    0
 
 Linux-Client
 

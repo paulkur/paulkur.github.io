@@ -13,6 +13,7 @@ pin: true
 - [NFS Share setup](#nfs-share-setup)
   - [Server configuration](#server-configuration)
   - [Client configuration](#client-configuration)
+  - [Adguard Setup](#adguard-setup)
 
 Useful links:
 
@@ -21,15 +22,30 @@ Useful links:
 
 ### OpenWRT Instalation - Setup on x86 PC
 
-- Set static IP address
+- Set static IP address (not mandatory, can skip if using Finnix os)
 
 ```bash
-uci set network.lan.ipaddr='192.168.0.201'
+uci set network.lan.ipaddr='192.168.0.20'
+```
+
+- on Finnix
+
+```bash
+passwd
+```
+
+```bash
+sudo nano /etc/ssh/ssh_config
+PermitRootLogin Yes
+sudo service sshd restart
+ip a
+ssh root@192.168.0.21
 ```
 
 - download image
 
 ```bash
+# download openwrt image
 wget https://downloads.openwrt.org/releases/22.03.5/targets/x86/64/openwrt-22.03.5-x86-64-generic-ext4-combined.img.gz
 gunzip openwrt-22.03.5-x86-64-generic-ext4-combined.img.gz
 lsblk
@@ -39,6 +55,7 @@ dd if=openwrt-22.03.5-x86-64-generic-ext4-combined.img bs=1M of=/dev/sdb
 parted /dev/sdb print
 parted -s /dev/sdb resizepart 2 100%
 resize2fs /dev/sdb2
+reboot
 ```
 
 - Installing by default
@@ -148,6 +165,10 @@ nano /etc/exports
 ```
 
 ```bash
+mkdir /mnt/backups/ && mkdir /mnt/fujiinside/ && mkdir /mnt/m2drive/
+```
+
+```bash
 /mnt/backups/ *(rw,all_squash,insecure,no_subtree_check,fsid=0)
 /mnt/fujiinside/ *(rw,all_squash,insecure,no_subtree_check,fsid=0)
 /mnt/m2drive/ *(rw,all_squash,insecure,no_subtree_check,fsid=0)
@@ -183,6 +204,29 @@ Mount manually:
 
 ```bash
 sudo mount 192.168.1.254:/sda1 /home/sandra/nfs_share
+```
+
+Mount manually curently Linux TurnKey (FS-trnt)
+
+```bash
+sudo mount 192.168.1.1:/backups /mnt/pve/backups
+sudo mount 192.168.1.1:/fujiinside /mnt/pve/fujiinside
+sudo mount 192.168.1.1:/m2drive  /mnt/pve/m2drive
+```
+
+Or mount permanently with entries in the `/etc/fstab` on each client PC:
+
+```bash
+192.168.1.254:/sda1 /media/openwrt       nfs  ro,async,auto,_netdev  0  0
+192.168.1.254:/sda2 /media/remote_stuff  nfs  rw,async,auto,_netdev  0  0
+```
+
+### Adguard Setup
+
+Check DNS masq listeninng on port 53:
+
+```bash
+netstat -tulpn |grep 53
 ```
 
 Mount manually curently Linux TurnKey (FS-trnt)
