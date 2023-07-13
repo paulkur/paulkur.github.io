@@ -65,7 +65,7 @@ wget wget https://www.webmin.com/download/webmin-current.tar.gz
 ```bash
 tar xvf webmin-current.tar.gz
 sudo mkdir -p /usr/local/webmin
-sudo ./webmin-XXX/setup.sh /usr/local/webmin/
+sudo ./webmin-2.021/setup.sh /usr/local/webmin/
 sudo firewall-cmd --add-port=10000/tcp --permanent
 sudo firewall-cmd --reload
 ```
