@@ -42,7 +42,7 @@ echo 'ansible ALL=(ALL) NOPASSWD: ALL' >/tmp/sudoers
 ```
 
 ```bash
-sudo cp /tmp/sudoers /etc/sudoers.d/ansible
+sudo cp /tmp/sudoers /etc/sudoers.d/paul
 ```
 
 test if works passwordless sudo

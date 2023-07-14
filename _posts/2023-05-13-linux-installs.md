@@ -5,6 +5,12 @@ categories: [Linux,docker,setup]
 tags: [linux,servers,docs,setup]     # TAG names should always be lowercase
 ---
 
+- ssh Copy files
+
+```bash
+scp -r /home/paul/files/intellij-IDEA  paul@192.168.1.148:/home/paul/Downloads
+```
+
 - Linux installs
 
 ```bash
@@ -59,7 +65,7 @@ wget wget https://www.webmin.com/download/webmin-current.tar.gz
 ```bash
 tar xvf webmin-current.tar.gz
 sudo mkdir -p /usr/local/webmin
-sudo ./webmin-XXX/setup.sh /usr/local/webmin/
+sudo ./webmin-2.021/setup.sh /usr/local/webmin/
 sudo firewall-cmd --add-port=10000/tcp --permanent
 sudo firewall-cmd --reload
 ```
@@ -241,6 +247,44 @@ sudo systemctl status docker
 sudo systemctl start docker
 ```
 
+Rocky
+
+```bash
+sudo dnf check-update
+```
+
+```bash
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+```bash
+sudo dnf install docker-ce docker-ce-cli containerd.io
+```
+
+```bash
+sudo systemctl start docker
+```
+
+```bash
+sudo systemctl status docker
+```
+
+```bash
+sudo systemctl enable docker
+```
+
+If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group:
+
+```bash
+sudo usermod -aG docker $(whoami)
+```
+
+If you need to add a user to the docker group that you’re not logged in as, declare that username explicitly using:
+
+```bash
+sudo usermod -aG docker username
+```
+
 - docker-compose download/install 👇
 
 ```bash
@@ -265,6 +309,26 @@ If needed, add to PATH
 
 ```bash
 export PATH="~/.docker/cli-plugins/docker-compose:$PATH"
+```
+
+Rocky
+
+```bash
+sudo dnf check-update
+```
+
+```bash
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+```bash
+sudo dnf install docker-compose-plugin
+```
+
+test
+
+```bash
+docker compose version
 ```
 
 - Install Portainer 👇
