@@ -53,6 +53,7 @@ sudo firewall-cmd --add-port=8080/tcp --permanent
 sudo firewall-cmd --add-port=3306/tcp --permanent
 sudo firewall-cmd --add-port=10002/tcp --permanent
 sudo firewall-cmd --add-port=9083/tcp --permanent
+sudo firewall-cmd --add-port=4040/tcp --permanent
 # livy UI
 sudo firewall-cmd --add-port=8998/tcp --permanent
 sudo firewall-cmd --reload
