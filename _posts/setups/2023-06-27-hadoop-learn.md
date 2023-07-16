@@ -1,6 +1,6 @@
 ---
 title: Hadoop learn
-date: 2023-06-27 12:53:00 +0100
+date: 2023-06-27 13:53:00 +0100
 categories: [homelab,hardware,setup,Hadoop]
 tags: [hadoop,servers,docs,lessons,setup]     # TAG names should always be lowercase
 pin: true
@@ -37,6 +37,7 @@ cd /home/paul/docker-master/hadoop-eco/hadoop-eco
 ./hadoop-start.sh start
 ./hive-start.sh all
 ./hive-start.sh meta
+docker exec -it master bash
 ```
 
 firewall rules rocky
@@ -56,6 +57,7 @@ sudo firewall-cmd --add-port=9083/tcp --permanent
 sudo firewall-cmd --add-port=4040/tcp --permanent
 # livy UI
 sudo firewall-cmd --add-port=8998/tcp --permanent
+sudo firewall-cmd --add-port=23/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
@@ -72,6 +74,9 @@ cd /home/paul/docker-master/spark/spark-cluster
 ./compose-up.sh 3.4.0 3 4 8 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
 ./compose-up.sh 3.4.0 3 3 4 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
 ./compose-down.sh
+docker exec -it sk-master bash
+
+./compose-up.sh 3.3.5 3.4.0 3 /home/paul/workspace/docker-ws/spark-notebook /tmp/hadoop /tmp/hadoop_logs /tmp/spark_logs
 ```
 
 - spark_version: Version of spark (3.4.0 and 3.1.1 is available now)
@@ -80,6 +85,10 @@ cd /home/paul/docker-master/spark/spark-cluster
 - mem (GiB): The amount of memory size of each spark worker (integer 1 or above. The unit is GiB)
 - jupyter_workspace_path: Host path for saving jupyter lab workspace data
 - log_path: Host path for saving spark log
+
+```bash
+docker compose up --scale spark-worker=3
+```
 
 ## Install Hadoop ubuntu
 
