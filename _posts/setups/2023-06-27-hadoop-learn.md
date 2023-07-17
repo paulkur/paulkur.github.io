@@ -45,6 +45,8 @@ firewall rules rocky
 ```bash
 # Hadoop ports
 sudo firewall-cmd --add-port=8088/tcp --permanent
+sudo firewall-cmd --add-port=2376/tcp --permanent
+
 sudo firewall-cmd --add-port=9870/tcp --permanent
 sudo firewall-cmd --add-port=8042/tcp --permanent
 # Spark ports
@@ -72,7 +74,7 @@ docker pull hjben/jupyter-lab:spark-livy
 ```bash
 cd /home/paul/docker-master/spark/spark-cluster
 ./compose-up.sh 3.4.0 3 4 8 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
-./compose-up.sh 3.4.0 3 3 4 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
+./compose-up.sh 3.4.0 3 1 1 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
 ./compose-down.sh
 docker exec -it sk-master bash
 

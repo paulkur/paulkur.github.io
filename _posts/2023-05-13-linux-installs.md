@@ -8,7 +8,9 @@ tags: [linux,servers,docs,setup]     # TAG names should always be lowercase
 - ssh Copy files
 
 ```bash
-scp -r /home/paul/files/intellij-IDEA  paul@192.168.1.148:/home/paul/Downloads
+scp -r /home/paul/files/intellij-IDEA  paul@192.168.1.192:/home/paul/Downloads
+scp -r /home/paul/jdk-8u371-linux-x64.tar_2.gz  paul@192.168.1.192:/home/paul/Downloads
+scp -r /home/paul/Git/docker-master  paul@192.168.1.192:/home/paul/Desktop
 ```
 
 - Linux installs
