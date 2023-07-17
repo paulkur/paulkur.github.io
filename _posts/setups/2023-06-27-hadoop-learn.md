@@ -89,7 +89,7 @@ docker exec -it sk-master bash
 - log_path: Host path for saving spark log
 
 ```bash
-docker compose up --scale spark-worker=3
+docker compose up -D --scale spark-worker=3
 ```
 
 ## Install Hadoop ubuntu
