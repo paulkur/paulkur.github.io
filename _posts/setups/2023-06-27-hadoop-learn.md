@@ -44,20 +44,22 @@ firewall rules rocky
 
 ```bash
 # Hadoop ports
-sudo firewall-cmd --add-port=8088/tcp --permanent
-sudo firewall-cmd --add-port=9870/tcp --permanent
-sudo firewall-cmd --add-port=8042/tcp --permanent
+sudo firewall-cmd --add-port=8088/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=9870/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=8042/tcp --permanent --zone=trusted
 # Spark ports
-sudo firewall-cmd --add-port=7077/tcp --permanent
-sudo firewall-cmd --add-port=8888/tcp --permanent
-sudo firewall-cmd --add-port=8080/tcp --permanent
-sudo firewall-cmd --add-port=3306/tcp --permanent
-sudo firewall-cmd --add-port=10002/tcp --permanent
-sudo firewall-cmd --add-port=9083/tcp --permanent
-sudo firewall-cmd --add-port=4040/tcp --permanent
+sudo firewall-cmd --add-port=7077/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=8888/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=8080/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=3306/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=10002/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=9083/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=4040/tcp --permanent --zone=trusted
 # livy UI
-sudo firewall-cmd --add-port=8998/tcp --permanent
-sudo firewall-cmd --add-port=23/tcp --permanent
+sudo firewall-cmd --add-port=8998/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=5432/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=23/tcp --permanent --zone=trusted
+sudo firewall-cmd --add-port=9001/tcp --permanent --zone=trusted
 sudo firewall-cmd --reload
 ```
 

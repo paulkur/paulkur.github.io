@@ -66,7 +66,7 @@ wget wget https://www.webmin.com/download/webmin-current.tar.gz
 tar xvf webmin-current.tar.gz
 sudo mkdir -p /usr/local/webmin
 sudo ./webmin-2.021/setup.sh /usr/local/webmin/
-sudo firewall-cmd --add-port=10000/tcp --permanent
+sudo firewall-cmd --add-port=10101/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
@@ -339,7 +339,6 @@ docker pull portainer/portainer-ce:latest
 
 ```bash
 docker run -d -p 9001:9000 -p 8001:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-docker restart portainer
 ```
 
 ```bash
@@ -375,4 +374,36 @@ docker volume prune -f
 docker network prune -f
 rm -rf ./mnt/postgres/*
 docker rmi -f $(docker images -a -q)
+```
+
+- partition resize ubuntu
+
+find out main partition (bigest size)
+
+```bash
+sudo fdisk -l
+```
+
+replacing `/dev/sda3` with the appropriate device name you identified in the previous step:
+
+```bash
+sudo parted /dev/sda resizepart 3 -1
+```
+
+Verify the partition resize
+
+```bash
+sudo parted /dev/sda print free
+```
+
+Resize the filesystem
+
+```bash
+resize2fs /dev/sda3
+```
+
+Verify the filesystem resize
+
+```bash
+df -h
 ```
