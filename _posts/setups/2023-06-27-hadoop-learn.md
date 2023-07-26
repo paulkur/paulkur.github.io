@@ -44,9 +44,17 @@ firewall rules rocky
 
 ```bash
 # Hadoop ports
+<<<<<<< HEAD
 sudo firewall-cmd --add-port=8088/tcp --permanent --zone=trusted
 sudo firewall-cmd --add-port=9870/tcp --permanent --zone=trusted
 sudo firewall-cmd --add-port=8042/tcp --permanent --zone=trusted
+=======
+sudo firewall-cmd --add-port=8088/tcp --permanent
+sudo firewall-cmd --add-port=2376/tcp --permanent
+
+sudo firewall-cmd --add-port=9870/tcp --permanent
+sudo firewall-cmd --add-port=8042/tcp --permanent
+>>>>>>> 10854743b7dac461616aab373208b119cca57c81
 # Spark ports
 sudo firewall-cmd --add-port=7077/tcp --permanent --zone=trusted
 sudo firewall-cmd --add-port=8888/tcp --permanent --zone=trusted
@@ -74,7 +82,7 @@ docker pull hjben/jupyter-lab:spark-livy
 ```bash
 cd /home/paul/docker-master/spark/spark-cluster
 ./compose-up.sh 3.4.0 3 4 8 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
-./compose-up.sh 3.4.0 3 3 4 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
+./compose-up.sh 3.4.0 3 1 1 /home/paul/workspace/docker-ws/spark-notebook /tmp/spark_logs
 ./compose-down.sh
 docker exec -it sk-master bash
 
@@ -89,7 +97,7 @@ docker exec -it sk-master bash
 - log_path: Host path for saving spark log
 
 ```bash
-docker compose up --scale spark-worker=3
+docker compose up -D --scale spark-worker=3
 ```
 
 ## Install Hadoop ubuntu
