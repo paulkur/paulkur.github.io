@@ -3,6 +3,7 @@ title: Airflow Setup
 date: 2023-06-17 16:46:00 +0100
 categories: [homelab,airflow,setup,Gitlab,github]
 tags: [servers,docs,gitlab,airflow,setup]     # TAG names should always be lowercase
+pin: true
 ---
 Useful links:
 
@@ -26,6 +27,10 @@ Useful links:
 conda create --name airflow_env python=3.9 -y
 ```
 
+```bash
+conda env remove --name airflow_env
+```
+
 - activate airflow_env
 
 ```bash
@@ -36,12 +41,30 @@ conda activate airflow_env
 
 ```bash
 pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-no-providers-3.9.txt"
-pip install -r requirements.txt
-# OR with all providers
+#with all providers
 pip install "apache-airflow==2.2.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.4/constraints-3.9.txt"
+```
+
+- install `requirements.txt`
+
+```bash
 pip install -r requirements.txt
-pip install apache-airflow-providers-postgres==3.0.0
-pip show apache-airflow-providers-postgres
+```
+
+- Install Jupyter
+
+```bash
+conda activate airflow_env
+conda install jupyter
+jupyter notebook --ip 192.168.1.152 --port 8889
+jupyter notebook
+conda list
+```
+
+- change Rocky IP address
+
+```bash
+sudo nmtui
 ```
 
 - initiate airflow database
@@ -122,8 +145,8 @@ schair
 - import connections and variables
 
 ```bash
-importkeys
-importcon
+alias importcon="airflow connections import ./dags/variables/connections.json"
+alias importkeys="airflow variables import ./dags/variables/keys.json"
 ```
 
 - kill process
