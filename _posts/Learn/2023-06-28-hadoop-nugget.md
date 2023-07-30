@@ -5,6 +5,13 @@ categories: [homelab,hardware,setup,Hadoop]
 tags: [hadoop,servers,docs,lessons,setup]     # TAG names should always be lowercase
 pin: false
 ---
+👇
+
+## Links
+
+- [Links](#links)
+- [Install Hadoop ubuntu](#install-hadoop-ubuntu)
+- [Hadoop lessons](#hadoop-lessons)
 
 ## Install Hadoop ubuntu
 
@@ -146,4 +153,4 @@ stop-all.sh
 
 /home/paul/hadoop-data/namenode
 
-[Back to Top](#menu)
+[Back to Top](#links)

@@ -5,6 +5,15 @@ categories: [homelab,hardware,setup,Hadoop,dev]
 tags: [hadoop,servers,docs,lessons,setup,dev]     # TAG names should always be lowercase
 pin: false
 ---
+👇
+
+## Links
+
+- [Links](#links)
+  - [Firewall rules for Rocky](#firewall-rules-for-rocky)
+  - [Install Hadoop ubuntu](#install-hadoop-ubuntu)
+- [Hadoop lessons](#hadoop-lessons)
+- [Multi-Cluster setup](#multi-cluster-setup)
 
 ### Firewall rules for Rocky
 
@@ -28,6 +37,8 @@ sudo firewall-cmd --add-port=23/tcp --permanent --zone=trusted
 sudo firewall-cmd --add-port=9001/tcp --permanent --zone=trusted
 sudo firewall-cmd --reload
 ```
+
+[Back to Top](#links)
 
 ### Install Hadoop ubuntu
 
@@ -160,6 +171,8 @@ echo $PATH
 export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
 ```
 
+[Back to Top](#links)
+
 ## Hadoop lessons
 
 ```bash
@@ -289,6 +302,8 @@ jps
 start-all.sh
 stop-all.sh
 ```
+
+[Back to Top](#links)
 
 ## Multi-Cluster setup
 
@@ -448,4 +463,4 @@ hnname
 </property>
 ```
 
-[Back to Top](#menu)
+[Back to Top](#links)

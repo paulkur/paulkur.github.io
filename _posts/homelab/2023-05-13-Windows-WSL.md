@@ -6,6 +6,27 @@ tags: [windows,servers,docs,wsl,setup,dev]     # TAG names should always be lowe
 pin: false
 ---
 
+👇
+
+## Links
+
+- [Links](#links)
+- [Windows SSH setup 1](#windows-ssh-setup-1)
+- [Windows openSSH setup 2](#windows-openssh-setup-2)
+- [Chocolatey and Sophi App install](#chocolatey-and-sophi-app-install)
+- [WSL quick Restore](#wsl-quick-restore)
+  - [Import  👇](#import--)
+  - [Export  👇](#export--)
+- [First install](#first-install)
+- [Git credential manager setup  👇](#git-credential-manager-setup--)
+- [WSL2 cleanup](#wsl2-cleanup)
+- [Thinkpad Windows Re-Install](#thinkpad-windows-re-install)
+- [WSL Init Setup](#wsl-init-setup)
+- [Usefull comands in PowerShell](#usefull-comands-in-powershell)
+  - [Connect SSH](#connect-ssh)
+- [Other comands in PowerShell](#other-comands-in-powershell)
+
+
 ## Windows SSH setup 1
 
 - Install `openSSH Server` and `openSSH Client` from `Settings -> Apps -> Optional Features`
@@ -145,7 +166,6 @@ Install Sophi app
 ```powershell
 choco install sophiapp --confirm
 ```
-
 
 ## WSL quick Restore
 
@@ -310,3 +330,5 @@ Copy-Item -Path "C:\temp\files\la-ams-ad01-log-1.txt" -Destination "d:\temp\"
 # Copy is a shorthand for Copy-Item:
 Copy "C:\temp\files\la-ams-ad01-log-1.txt" "d:\temp\"
 ```
+
+[Back to Top](#links)
