@@ -3,7 +3,7 @@ title: Ansible learn
 date: 2023-06-02 11:53:00 +0100
 categories: [homelab,hardware,setup,Ansible]
 tags: [ansible,servers,docs,lessons,setup]     # TAG names should always be lowercase
-pin: true
+pin: false
 ---
 
 ## Ansible lessons windows Managed node
@@ -27,13 +27,6 @@ ansible tower -m command -a "ls -la /root"
 ```
 
 ## 👇 Lesson 1.7: Config Linux managed hosts with Ad-hoc
-
-- KILL stuck VM. get PID
-
-```bash
-ps aux | grep "/usr/bin/kvm -id VMID"
-kill -9 PID
-```
 
 - clear known_hosts
 
@@ -62,7 +55,7 @@ usermod -aG sudo student
 5. ConfigureSSH key-based login
   a. ssh-keygen
   b. ssh-copy-id
-1. Configure Privilege escalation
+6. Configure Privilege escalation
 
 - check ssh Ubuntu
 
@@ -79,7 +72,6 @@ ansible -i inventory ubuntu -m user -a "name=ansible create_home=yes" -u student
 ansible -i inventory windows -m ansible.windows.win_ping
 ansible -i inventory all -m ansible.builtin.command -a reboot
 ```
-
 
 ## 👇 Lesson 2: Using Ad-hoc Commands
 

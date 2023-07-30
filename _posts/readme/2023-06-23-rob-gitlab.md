@@ -1,9 +1,9 @@
 ---
-title: Using GitLab
-date: 2023-06-13 11:36:00 +0100
-categories: [setup,Gitlab]
-tags: [servers,docs,gitlab,setup]     # TAG names should always be lowercase
-pin: true
+title: Rob GitLab
+date: 2023-06-23 11:36:00 +0100
+categories: [setup,Gitlab,Rob,readme]
+tags: [servers,docs,gitlab,setup,rob,readme]     # TAG names should always be lowercase
+pin: false
 ---
 
 Useful links:
@@ -140,10 +140,6 @@ prox-win-runner
 prox-lnx-runner
 ```
 
-```bash
-rocky-control-ansible-prox
-```
-
 - Rob
 
 ```bash
@@ -178,10 +174,6 @@ prox, win, shell, serv
 
 ```bash
 prox, lnx, shell, serv
-```
-
-```bash
-prox, rocky, control, ansible
 ```
 
 - Rob
@@ -229,18 +221,18 @@ think-local-win-shell
 - Optional maintenance note for the runner:
 
 ```bash
-The runner is using shell executor
+    The runner is using shell executor
 ```
 
 ```bash
-The runner is using docker executor
+    The runner is using docker executor
 ```
 
 - Executor: `shell` or `docker`
 - Start/Stop/Status
 
 ```bash
-sudo gitlab-runner start
+    sudo gitlab-runner start
 ```
 
 ```powershell
@@ -252,7 +244,7 @@ sudo gitlab-runner start
 ```
 
 ```bash
-sudo gitlab-runner stop
+    sudo gitlab-runner stop
 ```  
 
 - If will later install docker executor, then add to docker group

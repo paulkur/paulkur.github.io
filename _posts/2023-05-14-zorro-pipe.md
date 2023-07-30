@@ -1,10 +1,11 @@
 ---
-title: Zorro Readme
+title: Zorro pipe
 date: 2023-06-11 11:59:00 +0100
-categories: [servers,Zorro,setup,Windows]
-tags: [docs,zorro,setup,windows]     # TAG names should always be lowercase
+categories: [servers,Zorro,setup,Windows,dev,readme]
+tags: [docs,zorro,setup,windows,dev,readme]     # TAG names should always be lowercase
 pin: true
 ---
+
 Useful links👇
 
 - [Financial Hacker-main](https://financial-hacker.com/)

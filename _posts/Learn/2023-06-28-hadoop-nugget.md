@@ -1,9 +1,9 @@
 ---
-title: Hadoop learn
-date: 2023-06-27 12:53:00 +0100
+title: Hadoop nugget
+date: 2023-06-28 12:53:00 +0100
 categories: [homelab,hardware,setup,Hadoop]
 tags: [hadoop,servers,docs,lessons,setup]     # TAG names should always be lowercase
-pin: true
+pin: false
 ---
 
 ## Install Hadoop ubuntu

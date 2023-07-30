@@ -1,12 +1,12 @@
 ---
 title: Windows WSL
 date: 2023-05-13 11:59:00 +0100
-categories: [homelab,hardware,setup,wsl,windows]
-tags: [windows,servers,docs,wsl,setup]     # TAG names should always be lowercase
-pin: true
+categories: [homelab,hardware,setup,wsl,windows,dev]
+tags: [windows,servers,docs,wsl,setup,dev]     # TAG names should always be lowercase
+pin: false
 ---
 
-## Windows SSH setup
+## Windows SSH setup 1
 
 - Install `openSSH Server` and `openSSH Client` from `Settings -> Apps -> Optional Features`
 
@@ -75,6 +75,78 @@ ssh -i ~/.ssh/id_ed25519 -p 23 paul@192.168.1.169
 ssh -p 23 paul@192.168.1.169
 ```
 
+## Windows openSSH setup 2
+
+```powershell
+$PSVersionTable.PSVersion
+```
+
+need to get "True" here 👇
+
+```powershell
+(New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+```
+
+```powershell
+Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+```
+
+```powershell
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+```
+
+```powershell
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+```
+
+```powershell
+Start-Service sshd
+```
+
+```powershell
+Set-Service -Name sshd -StartupType 'Automatic'
+```
+
+```powershell
+if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
+    Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
+    New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+} else {
+    Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
+}
+```
+
+## [Chocolatey](https://chocolatey.org/install#individual) and [Sophi App](https://github.com/Sophia-Community/SophiApp) install
+
+```powershell
+Get-ExecutionPolicy
+```
+
+If it returns Restricted, then run
+
+```powershell
+Set-ExecutionPolicy AllSigned 
+```
+
+or
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process
+```
+
+Install Choco
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+Install Sophi app
+
+```powershell
+choco install sophiapp --confirm
+```
+
+
 ## WSL quick Restore
 
 ```powershell
@@ -106,9 +178,6 @@ Correct registry before start. In `regedit` `HKEY_CURRENT_USER\Software\Microsof
 Change `DefaultUid` to decimal `1000`
 
 ## First install
-
-
-
 
 ## Git credential manager setup  👇
 
@@ -182,3 +251,62 @@ put it in `C:\Users\%username%\wsl_setup\wsl_backups\`{: .filepath}
 - `Turn Windows features on or off` and enable `Virtual Machine Platform` and `Windows subsystem for Linux`. Restart PC
 - `Microsoft Store` >> search `Windows subsystem for Linux` (blue penguin) >> Install it >> run `Ubuntu` using windows button
 NOTE: If Building from scratch, after `Windows subsystem for Linux` search `Ubuntu` install and run it.
+
+## Usefull comands in PowerShell
+
+### Connect SSH
+
+- generate ssh key
+
+```powershell
+ssh-keygen
+ssh Administrator@...ipaddress..
+```
+
+- copy to
+  
+```path
+C:\Users\<YourUsername>\.ssh\
+```
+
+- Connect to OpenSSH Server `ssh domain\username@servername`
+
+```powershell
+ssh -i C:\Users\Paul\.ssh\data_rsa alexpaul@192.168.1.228
+```
+
+## Other comands in PowerShell
+
+```powershell
+Start-Process notepad 
+Get-Service -Name "Win*"
+Get-ChildItem "C:\"
+Get-ChildItem -Path "C:\Program Files"
+Get-ChildItem -Path "C:\Program Files\Fodler_Name" -Recurse | Select FullName
+Restart-Computer
+shutdown /s
+get-disk
+get-volume
+```
+
+- Copy folders-files
+
+```powershell
+Copy-Item "E:\Folder1" -Destination "E:\Folder2" -Recurse
+Move-Item -Path "E:\Folder1" -Destination "E:\Folder2" 
+Remove-Item E:\Folder1\Test.txt
+Get-Content "E:\Folder1\Test.txt"
+Set-Location "C:\Users\usrename\Documents"
+Copy-Item -Path "C:\temp\files\*"  -Destination "d:\temp\"
+```
+
+- terminal-Copy Item
+
+```powershell
+Copy-Item -Path "C:\temp\files\la-ams-ad01-log-1.txt" -Destination "d:\temp\"
+```
+
+```powershell
+# Copy is a shorthand for Copy-Item:
+Copy "C:\temp\files\la-ams-ad01-log-1.txt" "d:\temp\"
+```

@@ -1,8 +1,8 @@
 ---
-title: Terraform learn
-date: 2023-05-28 10:59:00 +0100
-categories: [Terraform,Zorro,setup]
-tags: [terraform,code,docs,zorro,setup]     # TAG names should always be lowercase
+title: Terraform
+date: 2023-05-14 14:59:00 +0100
+categories: [Terraform,Zorro,setup,dev]
+tags: [terraform,code,docs,zorro,setup,dev]     # TAG names should always be lowercase
 pin: true
 ---
 

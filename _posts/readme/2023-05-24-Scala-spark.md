@@ -1,8 +1,8 @@
 ---
-title: Scala Readme
+title: Scala-Spark setup
 date: 2023-05-24 10:14:00 +0100
-categories: [software,docs,scala,setup]
-tags: [software,docs,scala,spark,setup]     # TAG names should always be lowercase
+categories: [software,docs,scala,setup,readme]
+tags: [software,docs,scala,spark,setup,readme]     # TAG names should always be lowercase
 pin: false
 ---
 
@@ -15,6 +15,8 @@ Hi ! 👋 and Welcome
   - [Windows users 👩‍💻](#windows-users-)
   - [MacOS \& Linux users 👩‍💻](#macos--linux-users-)
   - [Possible issues and fixes](#possible-issues-and-fixes)
+  - [create "hello-world" demo in Scala 3](#create-hello-world-demo-in-scala-3)
+  - [Learning resources](#learning-resources)
 
 ## How to setup Scala-Spark local environment
 
@@ -203,5 +205,37 @@ Linux
 ```bash
 sudo usermod -aG docker $USER
 ```
+
+### create "hello-world" demo in Scala 3
+
+```bash
+sbt new scala/hello-world.g8
+```
+
+```bash
+cd <project_name>
+sbt test
+```
+
+on scala 3
+
+```bash
+sbt new scala/scala3.g8
+```
+
+### Learning resources
+
+from main sugestions:
+
+- [Martin Odersky, "Working Hard to Keep It Simple"](https://www.youtube.com/watch?v=3jg1AheF4n0&t=371s)
+- [Programming in Scala](http://www.artima.com/pins1ed/)
+- [Scala Cookbook](http://scalacookbook.com/)
+- [Programming in Scala](http://www.artima.com/pins1ed/)
+- [Oreilly - Learning Scala](https://www.oreilly.com/library/view/learning-scala/9781449368814/)
+- Coursera course on [Functional programming in Scala](https://www.coursera.org/learn/progfun1)
+
+from new found sugestions:
+
+{% include embed/youtube.html id='3jg1AheF4n0&t=371s' %}
 
 [Back to Top](#menu)
