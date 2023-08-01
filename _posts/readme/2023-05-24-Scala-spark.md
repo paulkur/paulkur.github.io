@@ -12,15 +12,15 @@ Hi ! 👋 and Welcome
 
 - [Menu](#menu)
 - [How to setup Scala-Spark local environment](#how-to-setup-scala-spark-local-environment)
-  - [Windows users 👩‍💻](#windows-users-)
-  - [MacOS \& Linux users 👩‍💻](#macos--linux-users-)
+  - [Windows users👩‍💻](#windows-users)
+  - [MacOS Linux users👩‍💻](#macos-linux-users)
   - [Possible issues and fixes](#possible-issues-and-fixes)
   - [create "hello-world" demo in Scala 3](#create-hello-world-demo-in-scala-3)
   - [Learning resources](#learning-resources)
 
 ## How to setup Scala-Spark local environment
 
-### Windows users 👩‍💻
+### Windows users👩‍💻
 
 - Install Docker 🐳 for [Windows](https://docs.docker.com/desktop/install/windows-install/)
 
@@ -105,7 +105,9 @@ _Setup for a start_
 cd .. && .\docker-clean.sh
 ```
 
-### MacOS & Linux users 👩‍💻
+[Back to Top](#menu)
+
+### MacOS Linux users👩‍💻
 
 - Install Docker 🐳 for [MacOS](https://docs.docker.com/desktop/install/mac-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
