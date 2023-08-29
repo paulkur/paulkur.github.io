@@ -26,7 +26,6 @@ pin: false
   - [Connect SSH](#connect-ssh)
 - [Other comands in PowerShell](#other-comands-in-powershell)
 
-
 ## Windows SSH setup 1
 
 - Install `openSSH Server` and `openSSH Client` from `Settings -> Apps -> Optional Features`
