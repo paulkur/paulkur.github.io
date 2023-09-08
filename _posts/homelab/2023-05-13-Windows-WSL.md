@@ -13,7 +13,11 @@ pin: false
 - [Links](#links)
 - [Windows SSH setup 1](#windows-ssh-setup-1)
 - [Windows openSSH setup 2](#windows-openssh-setup-2)
-- [Chocolatey and Sophi App install](#chocolatey-and-sophi-app-install)
+- [Windows PowerShell setup](#windows-powershell-setup)
+  - [For Win-Serv: Step 1: LINK TO How To:](#for-win-serv-step-1-link-to-how-to)
+  - [Step 2. Copy/Paste in Powershell (LINK to instructions:)](#step-2-copypaste-in-powershell-link-to-instructions)
+  - [Step 3. Install `PowerShell-7.3.6-win-x64.msi`, Chocolatey, Starship App or Sophi App install](#step-3-install-powershell-736-win-x64msi-chocolatey-starship-app-or-sophi-app-install)
+  - [Step 4](#step-4)
 - [WSL quick Restore](#wsl-quick-restore)
   - [Import  👇](#import--)
   - [Export  👇](#export--)
@@ -136,7 +140,39 @@ if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyCon
 }
 ```
 
-## [Chocolatey](https://chocolatey.org/install#individual) and [Sophi App](https://github.com/Sophia-Community/SophiApp) install
+## Windows PowerShell setup
+
+### For Win-Serv: Step 1: [LINK TO How To:](https://answers.microsoft.com/en-us/windows/forum/all/what-is-microsoftuixaml27-and-why-dont-i-have-it/9e5753be-3b5f-4975-ac00-a28344c710a6)
+
+1. Unzip `microsoft.ui.xaml.2.7.3.zip`
+2. Run this:
+
+```powershell
+Add-AppxPackage -Path "c:\Users\Administrator\Downloads\microsoft.ui.xaml.2.7.3\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx" 
+```
+
+### Step 2. Copy/Paste in Powershell ([LINK to instructions:](https://sid-500.com/2023/04/04/how-to-install-windows-terminal-on-windows-server-2022/))
+
+```powershell
+# Provide URL to newest version of Windows Terminal Application
+$url = 'https://github.com/microsoft/terminal/releases/download/v1.17.11461.0/Microsoft.WindowsTerminal_1.17.11461.0_8wekyb3d8bbwe.msixbundle'
+$split = Split-Path $url -Leaf
+ 
+# Prerequisites
+Start-BitsTransfer -Source 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' `
+-Destination $home\Microsoft.VCLibs.x86.14.00.Desktop.appx
+Add-AppxPackage $home\Microsoft.VCLibs.x86.14.00.Desktop.appx
+ 
+# Download
+Start-BitsTransfer `
+-Source $url `
+-Destination (Join-Path -Path $home -ChildPath $split)
+ 
+# Installation
+Add-AppxPackage -Path (Join-Path -Path $home -ChildPath $split)
+```
+
+### Step 3. Install `PowerShell-7.3.6-win-x64.msi`, [Chocolatey](https://chocolatey.org/install#individual), [Starship App](https://starship.rs/guide/#%F0%9F%9A%80-installation) or [Sophi App](https://github.com/Sophia-Community/SophiApp) install
 
 ```powershell
 Get-ExecutionPolicy
@@ -160,11 +196,23 @@ Install Choco
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
+Install Starship app
+
+```powershell
+choco install starship --confirm
+```
+
 Install Sophi app
 
 ```powershell
 choco install sophiapp --confirm
 ```
+
+### Step 4
+
+From `Gdrive/Installs/Main/Shell/PowerShell` Copy `starship.toml` , `Microsoft.PowerShell_profile.ps1`, `settings.json`
+
+
 
 ## WSL quick Restore
 
