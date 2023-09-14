@@ -234,6 +234,10 @@ put `wsl_setup` folder in `C:\Users\paul\`{: .filepath}
 wsl --import Ubuntu_env C:\Users\paul\wsl_setup\wsl_current\Ubuntu_env C:\Users\paul\wsl_setup\wsl_backups\Ubuntu_env_backup.tar --version 2
 ```
 
+```powershell
+wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 C:\Shared\Backups\Ubuntu-22.04.tar --version 2
+```
+
 ### Export  👇
 
 ```powershell
