@@ -238,7 +238,7 @@ put `wsl_setup` folder in `C:\Users\paul\`{: .filepath}
 ### Import  👇
 
 ```powershell
-wsl --import Ubuntu-22.04 C:\Users\paul\wsl\Ubuntu-22.04 C:\Users\paul\wsl\backups\Ubuntu-22.04-backup.tar --version 2
+wsl --import Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04-backup.tar --version 2
 ```
 
 ```powershell
@@ -248,7 +248,7 @@ wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 C:\Shared\Bac
 ### Export  👇
 
 ```powershell
-wsl --export Ubuntu-22.04 C:\Users\paul\wsl\Ubuntu-22.04.tar
+wsl --export Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04.tar
 ```
 
 Correct registry before start. In `regedit` `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
