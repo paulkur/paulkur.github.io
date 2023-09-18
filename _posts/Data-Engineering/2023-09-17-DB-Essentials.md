@@ -40,50 +40,10 @@ psql -h localhost -p 5432 -d itversity_sms_db -U itversity_sms_user -W
   * Running Scripts - `\i <SCRIPT_PATH>`
   * You will go through some of the commands over a period of time.
 
-## Setup Postgres using Docker (Same, just port difference)
+## Setup Postgres using Docker
 
-* If you are using our labs, the database will be pre-created by us with all the right permissions.
-* If you are using Windows or Mac, ensure that you have installed Docker Desktop.
-* If you are using Ubuntu based desktop, make sure to setup Docker.
-* Here are the steps that can be used to setup Postgres database using Docker.
-  * Pull the postgres image using `docker pull`
-  * Create the container using `docker create`.
-  * Start the container using `docker start`.
-  * Alternatively we can use `docker run` which will pull, create and start the container.
-  * Use `docker logs` or `docker logs -f` to review the logs to ensure Postgres Server is up and running.
-
-```shell
-docker pull postgres
-
-docker container create \
-    --name itv_pg \
-    -p 5433:5432 \
-    -h itv_pg \
-    -e POSTGRES_PASSWORD=itversity \
-    postgres
-
-docker start itv_pg
-
-docker logs itv_pg
-```
-
-* You can connect to Postgres Database setup using Docker with `docker exec`.
-
-```shell
-docker exec \
-    -it itv_pg \
-    psql -U postgres
-```
-
-* You can also connecto to Postgres directly with out using `docker exec`.
-
-```shell
-psql -h localhost \
-    -p 5433 \
-    -d postgres \
-    -U postgres \
-    -W
-```
+> Same, just port difference (5433:5432 NOT 5432:5432)
+{: .prompt-tip }
 
 ## Setup SQL Workbench
 
