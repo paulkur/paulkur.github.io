@@ -31,7 +31,6 @@ Get Data links👇
     - [from Web](#from-web)
     - [from coinAPI](#from-coinapi)
     - [for Zorro strategy dev](#for-zorro-strategy-dev)
-  - [IN development. Don't care for now](#in-development-dont-care-for-now)
 
 ## Strategy links
 
@@ -204,89 +203,5 @@ Remove-Item -Path "Zorro.zip"
 {: .prompt-info }
 
 When you want to run any script (example CSVtoHistory) you need to move file from folder to `Strategy` folder, then will see it in Zorro's dropdown list.
-
-[Back to Top](#readme-menu)
-
-### IN development. Don't care for now
-
-GitLab runners tags
-
-```text
-rob-win-runner
-rob, win, serv
-```
-
-Setup windows dev environment for C++
-
-1. download and install mingw-64 [from here](https://www.mingw-w64.org/)
-2. Install `gcc`
-
-```powershell
-pacman -S mingw-w64-ucrt-x86_64-gcc
-```
-
-then
-
-```powershell
-pacman -S mingw-w64-x86_64-gcc
-```
-
-First we will download and install `msys2`. After that we use the series of commands to install packages and update system.
-
-Update the package database and base packages:
-
-```powershell
-pacman -Syu
-```
-
-Update rest of the base packages:
-
-```powershell
-pacman -Su
-```
-
-- Open Msys MinGW terminal. To install gcc and g++ for C and C++:
-
-For 64 bit
-
-```powershell
-pacman -S mingw-w64-x86_64-gcc
-```
-
-For 32 bit
-
-```powershell
-pacman -S mingw-w64-i686-gcc
-```
-
-- To install the debugger ( gdb ) for C and C++
-
-For 64 bit
-
-```powershell
-pacman -S mingw-w64-x86_64-gdb
-```
-
-For 32 bit
-
-```powershell
-pacman -S mingw-w64-i686-gdb
-```
-
-- To check:
-
-```powershell
-gcc version : gcc --version
-```
-
-```powershell
-g++ version : g++ --version
-```
-
-```powershell
-gdb version : gdb --version
-```
-
-After installing these programs, we need to set the Path environment variable.
 
 [Back to Top](#readme-menu)
