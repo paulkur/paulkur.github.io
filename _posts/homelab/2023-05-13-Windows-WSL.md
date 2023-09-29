@@ -240,13 +240,13 @@ put `wsl_setup` folder in `C:\Users\paul\`{: .filepath}
 - to gdrive
 
 ```powershell
-wsl --export Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar
+wsl --export Ubuntu-22.04 "h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar"
 ```
 
 - local pc
 
 ```powershell
-wsl --export Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04.tar
+wsl --export Ubuntu-22.04 "C:\Users\paulk\Documents\wsl\Ubuntu-22.04.tar"
 ```
 
 ### Import  👇
@@ -254,13 +254,13 @@ wsl --export Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04.tar
 - robs win serv
 
 ```powershell
-wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar --version 2
+wsl --import Ubuntu-22.04 "C:\Users\paul\Documents\wsl\Ubuntu-22.04" "h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar" --version 2
 ```
 
 - local pc
 
 ```powershell
-wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar --version 2
+wsl --import Ubuntu-22.04 "C:\Users\paul\Documents\wsl\Ubuntu-22.04" "h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar" --version 2
 ```
 
 Correct registry before start. In `regedit` `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
