@@ -3,7 +3,7 @@ title: Windows WSL
 date: 2023-05-13 11:59:00 +0100
 categories: [homelab,hardware,setup,wsl,windows,dev]
 tags: [windows,servers,docs,wsl,setup,dev]     # TAG names should always be lowercase
-pin: false
+pin: true
 ---
 
 👇
@@ -235,20 +235,32 @@ put `wsl_setup` folder in `C:\Users\paul\`{: .filepath}
 - `Turn Windows features on or off` enable `Virtual Machine Platform` and `Windows subsystem for Linux`. Restart PC
 - `Microsoft Store` >> `Windows subsystem for Linux` (blue penguin) >> Install it >> run `Ubuntu` from (<kbd>Win</kbd>), click
 
-### Import  👇
-
-```powershell
-wsl --import Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04-backup.tar --version 2
-```
-
-```powershell
-wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 C:\Shared\Backups\Ubuntu-22.04.tar --version 2
-```
-
 ### Export  👇
+
+- to gdrive
+
+```powershell
+wsl --export Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar
+```
+
+- local pc
 
 ```powershell
 wsl --export Ubuntu-22.04 C:\Users\paulk\Documents\wsl\Ubuntu-22.04.tar
+```
+
+### Import  👇
+
+- robs win serv
+
+```powershell
+wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar --version 2
+```
+
+- local pc
+
+```powershell
+wsl --import Ubuntu-22.04 C:\Users\paul\Documents\wsl\Ubuntu-22.04 h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar --version 2
 ```
 
 Correct registry before start. In `regedit` `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
