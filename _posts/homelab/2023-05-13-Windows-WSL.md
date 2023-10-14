@@ -30,6 +30,16 @@ pin: true
   - [Connect SSH](#connect-ssh)
 - [Other comands in PowerShell](#other-comands-in-powershell)
 
+## Windows server RD create certificates command
+
+```powershell
+New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "RDP"
+```
+
+```powershell
+$pwd = ConvertTo-SecureString -String "P@ssw0rd" -Force -AsPlainText
+```
+
 ## Windows SSH setup 1
 
 - Install `openSSH Server` and `openSSH Client` from `Settings -> Apps -> Optional Features`
