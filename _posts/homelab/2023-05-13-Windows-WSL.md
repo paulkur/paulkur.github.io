@@ -69,7 +69,7 @@ ssh-keygen -t ed25519
 ``````
 
 ```powershell
-# By default the ssh-agent service is disabled. Configure it to start automatically. 
+# By default the ssh-agent service is disabled. Configure it to start automatically.
 # Make sure you're running as an Administrator.
 Get-Service ssh-agent | Set-Service -StartupType Automatic
 
@@ -150,7 +150,7 @@ if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyCon
 }
 ```
 
-## Windows PowerShell setup
+## PowerShell setup
 
 ### For Win-Serv: Step 1: [LINK TO How To:](https://answers.microsoft.com/en-us/windows/forum/all/what-is-microsoftuixaml27-and-why-dont-i-have-it/9e5753be-3b5f-4975-ac00-a28344c710a6)
 
@@ -158,7 +158,7 @@ if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyCon
 2. Run this:
 
 ```powershell
-Add-AppxPackage -Path "c:\Users\Administrator\Downloads\microsoft.ui.xaml.2.7.3\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx" 
+Add-AppxPackage -Path "c:\Users\Administrator\Downloads\microsoft.ui.xaml.2.7.3\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx"
 ```
 
 ### Step 2. Copy/Paste in Powershell ([LINK to instructions:](https://sid-500.com/2023/04/04/how-to-install-windows-terminal-on-windows-server-2022/))
@@ -167,17 +167,17 @@ Add-AppxPackage -Path "c:\Users\Administrator\Downloads\microsoft.ui.xaml.2.7.3\
 # Provide URL to newest version of Windows Terminal Application
 $url = 'https://github.com/microsoft/terminal/releases/download/v1.17.11461.0/Microsoft.WindowsTerminal_1.17.11461.0_8wekyb3d8bbwe.msixbundle'
 $split = Split-Path $url -Leaf
- 
+
 # Prerequisites
 Start-BitsTransfer -Source 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' `
 -Destination $home\Microsoft.VCLibs.x86.14.00.Desktop.appx
 Add-AppxPackage $home\Microsoft.VCLibs.x86.14.00.Desktop.appx
- 
+
 # Download
 Start-BitsTransfer `
 -Source $url `
 -Destination (Join-Path -Path $home -ChildPath $split)
- 
+
 # Installation
 Add-AppxPackage -Path (Join-Path -Path $home -ChildPath $split)
 ```
@@ -191,7 +191,7 @@ Get-ExecutionPolicy
 If it returns Restricted, then run
 
 ```powershell
-Set-ExecutionPolicy AllSigned 
+Set-ExecutionPolicy AllSigned
 ```
 
 or
@@ -222,7 +222,9 @@ choco install sophiapp --confirm
 
 From `Gdrive/Installs/Main/Shell/PowerShell` Copy `starship.toml` , `Microsoft.PowerShell_profile.ps1`, `settings.json`
 
-## WSL quick Restore
+## WSL commands
+
+- list all
 
 ```powershell
 wsl -l -v
@@ -232,6 +234,18 @@ wsl -l -v
 wsl --shutdown Ubuntu-22.04
 ```
 
+- install distro
+
+```powershell
+wsl --list --online
+```
+
+```powershell
+wsl --install -d <Distribution Name>
+```
+
+- remove distro
+
 ```powershell
 wsl --unregister Ubuntu-22.04
 ```
@@ -239,6 +253,8 @@ wsl --unregister Ubuntu-22.04
 ```powershell
 wsl --setdefault Ubuntu-22.04
 ```
+
+## WSL quick Restore
 
 put `wsl_setup` folder in `C:\Users\paul\`{: .filepath}
 
@@ -270,16 +286,24 @@ wsl --import Ubuntu-22.04 "C:\Users\paul\Documents\wsl\Ubuntu-22.04" "h:\My Driv
 - local pc
 
 ```powershell
-wsl --import Ubuntu-22.04 "C:\Users\paul\Documents\wsl\Ubuntu-22.04" "h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar" --version 2
+wsl --import Ubuntu-22.04 "C:\Users\paulk\Documents\wsl\Ubuntu-22.04" "h:\My Drive\Documents\Installs\Main\Big_Backups\wsl\Ubuntu-22.04.tar" --version 2
 ```
 
 Correct registry before start. In `regedit` `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss`
 
 Change `DefaultUid` to decimal `1000`
 
-## First install
+## WSL Init Setup
 
-## Git credential manager setup  👇
+Using pre-build img [Download WSL img](https://transfer.pcloud.com/download.html?code=5ZvjJsVZEd13dGNIorzZMIdIZubCBc56QDWVQoVxBnQ26w8TzFFUV)
+put it in `C:\Users\%username%\wsl_setup\wsl_backups\`{: .filepath}
+
+- `Turn Windows features on or off` and enable `Virtual Machine Platform` and `Windows subsystem for Linux`. Restart PC
+- `Microsoft Store` >> search `Windows subsystem for Linux` (blue penguin) >> Install it >> run `Ubuntu` using windows button
+NOTE: If Building from scratch, after `Windows subsystem for Linux` search `Ubuntu` install and run it.
+
+
+## WSL Git credential manager setup  👇
 
 for WSL to sync with Git Windows [more details](https://learn.microsoft.com/en-gb/windows/wsl/tutorials/wsl-git)
 
@@ -318,7 +342,7 @@ if version < v2.36.1
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"
 ```
 
-## WSL2 cleanup
+## Linux cleanup
 
 ```bash
 sudo apt clean
@@ -343,15 +367,6 @@ rm -rf ~/tmp/*
 11. F10 exit saving changes
 12. Install windows. Insert usb. Shutdown windows, turn on windows, while booting enter boot menu
 
-## WSL Init Setup
-
-Using pre-build img [Download WSL img](https://transfer.pcloud.com/download.html?code=5ZvjJsVZEd13dGNIorzZMIdIZubCBc56QDWVQoVxBnQ26w8TzFFUV)
-put it in `C:\Users\%username%\wsl_setup\wsl_backups\`{: .filepath}
-
-- `Turn Windows features on or off` and enable `Virtual Machine Platform` and `Windows subsystem for Linux`. Restart PC
-- `Microsoft Store` >> search `Windows subsystem for Linux` (blue penguin) >> Install it >> run `Ubuntu` using windows button
-NOTE: If Building from scratch, after `Windows subsystem for Linux` search `Ubuntu` install and run it.
-
 ## Usefull comands in PowerShell
 
 ### Connect SSH
@@ -364,7 +379,7 @@ ssh Administrator@...ipaddress..
 ```
 
 - copy to
-  
+
 ```path
 C:\Users\<YourUsername>\.ssh\
 ```
@@ -375,10 +390,10 @@ C:\Users\<YourUsername>\.ssh\
 ssh -i C:\Users\Paul\.ssh\data_rsa alexpaul@192.168.1.228
 ```
 
-## Other comands in PowerShell
+## Other PowerShell comands
 
 ```powershell
-Start-Process notepad 
+Start-Process notepad
 Get-Service -Name "Win*"
 Get-ChildItem "C:\"
 Get-ChildItem -Path "C:\Program Files"
@@ -393,7 +408,7 @@ get-volume
 
 ```powershell
 Copy-Item "E:\Folder1" -Destination "E:\Folder2" -Recurse
-Move-Item -Path "E:\Folder1" -Destination "E:\Folder2" 
+Move-Item -Path "E:\Folder1" -Destination "E:\Folder2"
 Remove-Item E:\Folder1\Test.txt
 Get-Content "E:\Folder1\Test.txt"
 Set-Location "C:\Users\usrename\Documents"
